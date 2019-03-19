@@ -1,0 +1,5 @@
+.DS_Store
+/docker/mysql/mysql
+/docker/mysql/performance_schema
+/docker/mysql/**/*.opt
+/docker/mysql/ib*
