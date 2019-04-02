@@ -12,3 +12,20 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+#app {
+  background-image: url('/img/background-main.png');
+
+  .title-musicxs {
+    background-image: url('/img/back-musicxs-title.png');
+  }
+
+  .box1 {
+    background-image: url('/img/back-box1.jpg');
+  }
+
+  .title-fans {
+    background-image: url('/img/back-fans-title.png');
+  }
+
+}

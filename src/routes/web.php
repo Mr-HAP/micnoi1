@@ -11,6 +11,21 @@
 |
 */
 
+// inicio
 Route::get('/', function () {
+    return view('home');
+});
+
+//registro musician
+Route::get('/signup-musician', function () {
     return view('welcome');
 });
+
+//registro musician
+Route::get('/signup-fan', function () {
+    return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
