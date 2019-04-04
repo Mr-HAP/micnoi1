@@ -10660,3 +10660,151 @@ a.text-dark:focus {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+/******* Estilo background ********/
+
+.container-fluid {
+  background-color: #0a101a;
+}
+
+#app {
+  /******** Estilos Menu ************/
+  /********* Estilos Contenido ***********/
+  /**************VIDEO PORTADA ******************/
+}
+
+#app .title-musicxs {
+  background-image: url("/img/back-musicxs-title.png");
+}
+
+#app .box1 {
+  background-color: #818181;
+}
+
+#app .box2 {
+  background-color: #575757;
+}
+
+#app .title-fans {
+  background-image: url("/img/back-fans-title.png");
+}
+
+#app div.flex-column {
+  background: gray;
+}
+
+#app .flex-column {
+  border-bottom-right-radius: 100px;
+  border-top-right-radius: 100px;
+  padding-right: 50px;
+}
+
+#app .navbar-nav.items-menu.w-50 {
+  padding-left: 50px;
+  margin-left: -60px;
+  background: #000;
+  min-height: 80px;
+}
+
+#app .nav-item.p-2 {
+  padding: 0 0.5rem !important;
+}
+
+#app .navbar-light .navbar-brand {
+  color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+}
+
+#app .registro-header > li > a.nav-link {
+  color: #CEED23 !important;
+  font-size: 14pt;
+  font-weight: 700;
+  text-align: center;
+}
+
+#app main {
+  z-index: 900;
+  margin-top: -60px;
+  color: #FFFFFF;
+}
+
+#app h2,
+#app h3 {
+  color: #ffffff;
+  font-weight: 600 !important;
+}
+
+#app .title-musicxs h2,
+#app .box1 > div > h2,
+#app .title-fans h2 {
+  color: #FFFFFF;
+  font-weight: 700 !important;
+  padding: 5pt;
+  text-align: center;
+}
+
+#app .exp-txt30 {
+  letter-spacing: 30pt;
+}
+
+#app .exp-txt10 {
+  letter-spacing: 10pt;
+}
+
+#app .exp-txt20 {
+  letter-spacing: 20pt;
+}
+
+#app .accentColor {
+  color: #ceed23 !important;
+}
+
+#app .video {
+  position: relative;
+  background-color: black;
+  height: 75vh;
+  min-height: 25rem;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+#app .video video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#app .video .container-video {
+  position: relative;
+  z-index: 2;
+}
+
+#app .video > .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
+  border-radius: 10px;
+}
+
+@media (pointer: coarse) and (hover: none) {
+  #app div.video {
+    background: url("https://source.unsplash.com/XT5OInaElMw/1600x900") black no-repeat center center scroll;
+  }
+
+  #app div.video video {
+    display: none;
+  }
+}
+
