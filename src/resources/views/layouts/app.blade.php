@@ -20,7 +20,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="container-fluid">
-    <head>
         <div id="app" class="container">
             {{--<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
                 <div class="container">
@@ -83,6 +82,5 @@
                 </div>
             </main>
         </div>
-    </head>
 </body>
 </html>

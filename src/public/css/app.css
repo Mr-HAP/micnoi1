@@ -10666,10 +10666,21 @@ a.text-dark:focus {
   background-color: #0a101a;
 }
 
+/******* Estilo Links ********/
+
+a,
+a:visited,
+a:active {
+  color: #ffffff !important;
+}
+
 #app {
   /******** Estilos Menu ************/
   /********* Estilos Contenido ***********/
   /**************VIDEO PORTADA ******************/
+  /************************ - FORMULARRIOS - ************************************/
+  /****************** -  Cards List - *********************/
+  /****************** -  Tabs - List - *********************/
 }
 
 #app .title-musicxs {
@@ -10733,6 +10744,15 @@ a.text-dark:focus {
   font-weight: 600 !important;
 }
 
+#app .title-content {
+  color: #FFFFFF;
+  font-weight: 700 !important;
+  padding: 5pt;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+}
+
 #app .title-musicxs h2,
 #app .box1 > div > h2,
 #app .title-fans h2 {
@@ -10740,6 +10760,8 @@ a.text-dark:focus {
   font-weight: 700 !important;
   padding: 5pt;
   text-align: center;
+  text-transform: uppercase;
+  width: 100%;
 }
 
 #app .exp-txt30 {
@@ -10806,5 +10828,40 @@ a.text-dark:focus {
   #app div.video video {
     display: none;
   }
+}
+
+#app label.hover-file:hover > h2 > span,
+#app label.hover-file:hover > h3 {
+  color: #0a101a !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+#app .card {
+  background-color: #575757 !important;
+  /* border: 1px solid rgba(0, 0, 0, 0.125); */
+  /* border-radius: 0.25rem; */
+}
+
+#app .nav-tabs .nav-link {
+  border: 0px solid transparent;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: #575757;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#app .nav-tabs a.nav-link:hover {
+  background-color: #818181;
+  color: #ceed23;
+}
+
+#app .nav-tabs .nav-link.active,
+#app .nav-tabs .nav-item.show .nav-link {
+  color: #ffffff;
+  background-color: #818181;
+  border-color: unset !important;
+  font-size: 20px;
+  font-weight: 600;
 }
 
