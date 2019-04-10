@@ -12,3 +12,199 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+/******* Estilo background ********/
+.container-fluid {
+  background-color: #0a101a;
+}
+
+/******* Estilo Links ********/
+a, a:visited, a:active {
+  color: #ffffff !important;
+}
+
+#app {
+  .title-musicxs {
+    background-image: url('/img/back-musicxs-title.png');
+  }
+
+  .box1 {
+    background-color: #818181;
+  }
+
+  .box2 {
+    background-color: #575757;
+  }
+
+  .title-fans {
+    background-image: url('/img/back-fans-title.png');
+  }
+
+  /******** Estilos Menu ************/
+  div.flex-column{
+    background: gray;
+  }
+
+  .flex-column {
+    border-bottom-right-radius: 100px;
+    border-top-right-radius: 100px;
+    padding-right: 50px;
+  }
+
+  .navbar-nav.items-menu.w-50 {
+    padding-left: 50px;
+    margin-left: -60px;
+    background: #000;
+    min-height: 80px;
+  }
+
+  .nav-item.p-2{
+    padding: 0 0.5rem !important;
+  }
+
+  .navbar-light .navbar-brand { //Superponer el logo al contenido
+    color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+  }
+
+  .registro-header > li > a.nav-link {
+    color: #CEED23 !important;
+    font-size: 14pt;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  /********* Estilos Contenido ***********/
+  main{
+    z-index: 900;
+    margin-top: -60px;
+    color: #FFFFFF;
+  }
+
+  h2,h3{
+    color: #ffffff;
+    font-weight: 600 !important;
+  }
+
+  .title-content{
+    color: #FFFFFF;
+    font-weight: 700 !important;
+    padding: 5pt;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+  }
+
+  .title-musicxs h2, .box1 > div > h2, .title-fans h2 {
+    color: #FFFFFF;
+    font-weight: 700 !important;
+    padding: 5pt;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+  }
+
+  .exp-txt30{
+    letter-spacing: 30pt;
+  }
+
+  .exp-txt10{
+    letter-spacing: 10pt;
+  }
+
+  .exp-txt20{
+    letter-spacing: 20pt;
+  }
+
+  .accentColor{
+    color: #ceed23 !important;
+  }
+
+  /**************VIDEO PORTADA ******************/
+  .video {
+    position: relative;
+    background-color: black;
+    height: 75vh;
+    min-height: 25rem;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  .video video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  .video .container-video {
+    position: relative;
+    z-index: 2;
+  }
+
+  .video > .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1;
+    border-radius: 10px;
+  }
+
+  @media (pointer: coarse) and (hover: none) {
+    div.video {
+      background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+    }
+    div.video video {
+      display: none;
+    }
+  }
+  /****************** - FORMULARRIOS - ***************************/
+  label.hover-file:hover > h2 > span, label.hover-file:hover > h3{
+    color: #0a101a !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  }
+
+
+  /****************** -  Cards List - *********************/
+  .card {
+    background-color: #575757 !important;
+    /* border: 1px solid rgba(0, 0, 0, 0.125); */
+    /* border-radius: 0.25rem; */
+  }
+
+  /****************** -  Tabs - List - *********************/
+  .nav-tabs .nav-link {
+    border: 0px solid transparent;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #575757;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .nav-tabs a.nav-link:hover {
+    background-color: #818181;
+    color: #ceed23;
+  }
+
+  .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: #ffffff;
+    background-color: #818181;
+    border-color: unset !important;
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
