@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Band;
+use App\Offer;
 use App\Role;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class MusicianController extends Controller
      */
     public function index()
     {
-        //
+        $musicians = Band::all();
+        return view('musician-list', compact('musicians'));
     }
 
     /**
