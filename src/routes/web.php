@@ -29,7 +29,7 @@ Route::post('/profile-musician/update/{id}', 'MusicianController@update');
 Route::get('/register/', 'MusicianController@create');
 
 //Store Musician
-Route::post('store', 'MusicianController@store');
+Route::post('/musician/store', 'MusicianController@store');
 
 
 //registro fans

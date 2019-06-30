@@ -10,7 +10,7 @@
                 <h2 class="exp-txt30"><span class="accentColor">M</span>USIXS</h2>
             </div>
         </div>
-        <form role="form" method="post" action="{{url('store')}}">
+        <form role="form" method="post" action="{{url('/musician/store')}}">
             {{ csrf_field() }}
             <div class="row">
                 <div class="col mr-2">

@@ -39,15 +39,6 @@ class MusicianController extends Controller
     public function store(Request $request)
     {
         $role_musico = Role::where('name', 'musico')->first();
-        $request->validate([
-            'country'       => 'required',
-            'name'          => 'required',
-            'region'        => 'required',
-            'city'          => 'required',
-            'hosting'       => 'required',
-            'amplification' => 'required',
-            'id_admin_band' => 'required'
-        ]);
         $band = new Band([
             'country' => $request->get('country'),
             'name' => $request->get('name'),
@@ -70,7 +61,7 @@ class MusicianController extends Controller
         ]);
         $band->save();
         //return redirect('/shares')->with('success', 'Stock has been added');
-        return Redirect::to('index');
+        return redirect('/');
     }
 
     /**
