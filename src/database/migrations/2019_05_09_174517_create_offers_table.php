@@ -14,8 +14,8 @@ class CreateOffersTable extends Migration
     public function up()
     {
         Schema::create('offers', function (Blueprint $table) {
-            $table->bigIncrements('idoffers');
-            $table->integer('users_idusers')->unsigned();
+            $table->bigIncrements('offer_id');
+            $table->integer('user_id')->unsigned();
             $table->string('title',50);
             $table->string('description',300);
             $table->string('photo',200);

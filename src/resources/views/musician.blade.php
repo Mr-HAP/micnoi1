@@ -10,7 +10,8 @@
                 <h2 class="exp-txt30"><span class="accentColor">M</span>USIXS</h2>
             </div>
         </div>
-        <form>
+        <form role="form" method="post" action="{{action('MusicianController@update', $band->band_id)}}">
+            {{ csrf_field() }}
             <div class="row">
                 <div class="col mr-2">
                     <div class="row box1 mb-2 py-4">
@@ -19,7 +20,7 @@
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Nombre">
+                                    <input type="text" class="form-control" name="name" placeholder="Nombre" value="{{$band->name}}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -35,9 +36,9 @@
                             <div class="form-group row">
                                 <label for="Miembros" class="col-sm-2 col-form-label">Miembros</label>
                                 <div class="col-sm-5">
-                                    <input type="number" class="form-control" id="Miembros" placeholder="2">
+                                    <input type="number" class="form-control" name="members" placeholder="2" value="{{$band->members}}">
                                 </div>
-                                <div class="form-group col-sm-5">
+                                {{--<div class="form-group col-sm-5">
                                     <div class="form-check form-check-inline mt-2">
                                         <input class="form-check-input" type="checkbox" id="Solista" value="Solista">
                                         <label class="form-check-label" for="Solista">Solista</label>
@@ -46,33 +47,20 @@
                                         <input class="form-check-input" type="checkbox" id="Grupo" value="Grupo">
                                         <label class="form-check-label" for="Grupo">Grupo</label>
                                     </div>
-                                </div>
+                                </div>--}}
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label for="inputState">Region</label>
-                                    <select id="inputState" class="form-control">
-                                        <option selected>Seleccione...</option>
-                                        <option>Region I</option>
-                                        <option>Region II</option>
-                                    </select>
+                                    <input type="text" class="form-control" name="region" placeholder="metropolis" value="{{$band->region}}">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputState">Ciudad</label>
-                                    <select id="inputState" class="form-control">
-                                        <option selected>Seleccione...</option>
-                                        <option>Santiago</option>
-                                        <option>Punta Arenas</option>
-                                    </select>
+                                    <input type="text" class="form-control" name="city" placeholder="Santiago" value="{{$band->city}}">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="inputState">Comuna</label>
-                                    <select id="inputState" class="form-control">
-                                        <option selected>Seleccione...</option>
-                                        <option>La Cisterna</option>
-                                        <option>Mehuin</option>
-                                        <option>Alhue</option>
-                                    </select>
+                                    <label for="inputState">Pais</label>
+                                    <input type="text" class="form-control" name="country" placeholder="Chile" value="{{$band->country}}">
                                 </div>
                             </div>
                         </div>
@@ -104,56 +92,50 @@
                         <div class="col-12 text-center">
                             <h3>TRAYECTORIA</h3>
                         </div>
-                        <div class="col-sm-6 text-center">
+                        <div class="col-sm-4 text-center">
                             <div class="form-row">
                                 <div class="col-sm-4">
-                                    <input type="number" class="form-control form-control-sm" id="Miembros" placeholder="2">
+                                    <input type="number" class="form-control form-control-sm" name="songs_number" value="{{$band->songs_number}}" placeholder="2">
                                 </div>
-                                <label for="Miembros" class="col-sm-auto col-form-label">Miembros</label>
+                                <label for="Miembros" class="col-sm-auto col-form-label">Canciones</label>
                             </div>
                             <div class="form-row">
                                 <div class="col-sm-4">
-                                    <input type="number" class="form-control form-control-sm" id="Miembros" placeholder="2">
+                                    <input type="number" class="form-control form-control-sm" name="eps" placeholder="2" value="{{$band->eps}}">
                                 </div>
-                                <label for="Miembros" class="col-sm-auto col-form-label">Miembros</label>
+                                <label for="Miembros" class="col-sm-auto col-form-label">EPS</label>
                             </div>
                             <div class="form-row">
                                 <div class="col-sm-4">
-                                    <input type="number" class="form-control form-control-sm" id="Miembros" placeholder="2">
+                                    <input type="number" class="form-control form-control-sm" name="discs" value="{{$band->discs}}" placeholder="2">
                                 </div>
-                                <label for="Miembros" class="col-sm-auto col-form-label">Miembros</label>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-sm-4">
-                                    <input type="number" class="form-control form-control-sm" id="Miembros" placeholder="2">
-                                </div>
-                                <label for="Miembros" class="col-sm-auto col-form-label">Miembros</label>
+                                <label for="Miembros" class="col-sm-auto col-form-label">Discos</label>
                             </div>
                         </div>
-                        <div class="col-sm-6 text-center">
+                        <div class="col-sm-8 text-center">
                             <div class="form-row">
-                                <div class="col-sm-4">
-                                    <input type="number" class="form-control form-control-sm" id="Miembros" placeholder="2">
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control form-control-sm" id="facebook"  value="{{$band->facebook}}" placeholder="2">
                                 </div>
-                                <label for="Miembros" class="col-sm-auto col-form-label">Miembros</label>
+                                <label for="Miembros" class="col-sm-auto col-form-label">Facebook</label>
                             </div>
                             <div class="form-row">
-                                <div class="col-sm-4">
-                                    <input type="number" class="form-control form-control-sm" id="Miembros" placeholder="2">
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control form-control-sm" id="instagram" value="{{$band->instagram}}" placeholder="2">
                                 </div>
-                                <label for="Miembros" class="col-sm-auto col-form-label">Miembros</label>
+                                <label for="Miembros" class="col-sm-auto col-form-label">Instagram</label>
                             </div>
                             <div class="form-row">
-                                <div class="col-sm-4">
-                                    <input type="number" class="form-control form-control-sm" id="Miembros" placeholder="2">
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control form-control-sm" id="youtube" value="{{$band->youtube}}" placeholder="2">
                                 </div>
-                                <label for="Miembros" class="col-sm-auto col-form-label">Miembros</label>
+                                <label for="Miembros" class="col-sm-auto col-form-label">Youtube</label>
                             </div>
                             <div class="form-row">
-                                <div class="col-sm-4">
-                                    <input type="number" class="form-control form-control-sm" id="Miembros" placeholder="2">
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control form-control-sm" id="concert" value="{{$band->concerts}}" placeholder="2">
                                 </div>
-                                <label for="Miembros" class="col-sm-auto col-form-label">Miembros</label>
+                                <label for="Miembros" class="col-sm-auto col-form-label">Conciertos</label>
                             </div>
                         </div>
                     </div>
@@ -165,7 +147,7 @@
                                 <h2><span class="accentColor exp-txt20">SUBIR FOTO</span></h2>
                                 <h3 class="exp-txt10">MUSICO O SOLISTA</h3>
                             </label>
-                            <input type="file" hidden="hidden" class="" id="customFile">
+                            <input type="file" hidden="hidden" class="" name="customFile">
                         </div>
                     </div>
                     <div class="row box1 mb-2 pb-lg-5">
@@ -174,7 +156,7 @@
                                 <h2><span class="accentColor">SUBIR VIDEO DE PRESENTACION</span></h2>
                                 <h3 class="exp-txt10">MUSICO O SOLISTA</h3>
                             </label>
-                            <input type="file" hidden="hidden" class="" id="customFile">
+                            <input type="file" hidden="hidden" class="" name="customFile2">
                         </div>
                     </div>
                     <div class="row box1 mb-2 py-4">
@@ -183,11 +165,11 @@
                             <div class="form-group row">
                                 <div class="form-group col-sm">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Solista" value="Solista">
+                                        <input class="form-check-input" type="radio" name="hosting" value="1" {{$band->hosting == true ? 'checked': ''}}>
                                         <label class="form-check-label" for="Solista"><h2>SI</h2></label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Grupo" value="Grupo">
+                                        <input class="form-radio-input" type="radio" name="hosting" value="0" {{$band->hosting == false ? 'checked': ''}} >
                                         <label class="form-check-label" for="Grupo"><h2>NO</h2></label>
                                     </div>
                                 </div>
@@ -198,11 +180,11 @@
                             <div class="form-group row">
                                 <div class="form-group col-sm">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Solista" value="Solista">
+                                        <input class="form-check-input" type="radio" name="amplification" value="1" {{$band->hosting == true ? 'checked': ''}} >
                                         <label class="form-check-label" for="Solista"><h2>SI</h2></label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Grupo" value="Grupo">
+                                        <input class="form-check-input" type="radio" name="amplification" value="0" {{$band->hosting == false ? 'checked': ''}} >
                                         <label class="form-check-label" for="Grupo"><h2>NO</h2></label>
                                     </div>
                                 </div>
@@ -211,8 +193,10 @@
                     </div>
                 </div>
             </div>
-
-
+            <div class="row">
+                <button type="submit" class="col-12 btn btn-success mb-2">Publicar</button>
+            </div>
+        </form>
         <div class="row box1 mb-2 py-5">
             <div class="col text-center">
                 <h3><span class="accentColor exp-txt10">REGISTRO </span> DE</h3>
@@ -269,7 +253,6 @@
                 </div>
 
             </div>
-        </form>
     </div>
 @endsection
 

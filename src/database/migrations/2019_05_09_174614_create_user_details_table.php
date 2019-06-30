@@ -14,8 +14,8 @@ class CreateUserDetailsTable extends Migration
     public function up()
     {
         Schema::create('user_details', function (Blueprint $table) {
-            $table->bigIncrements('iduser_details');
-            $table->integer('users_idusers');
+            $table->bigIncrements('id_user_detail');
+            $table->integer('id_user');
             $table->string('country',50);
             $table->string('city',50);
             $table->string('photo',200);
