@@ -17,10 +17,17 @@ Route::get('/', function () {
 });
 
 
-//registro musician
-Route::get('/signup-musician', function () {
-    return view('musician');
-});
+//Edit profile musician
+Route::get('/profile-musician/{id}', 'MusicianController@edit');
+
+//Update profile musician
+Route::post('/profile-musician/update/{id}', 'MusicianController@update');
+
+//Create musician
+Route::get('/register/', 'MusicianController@create');
+
+//Store Musician
+Route::post('store', 'MusicianController@store');
 
 //registro fans
 Route::get('/signup-fans', function () {
@@ -37,6 +44,6 @@ Route::get('/musician-list', function () {
     return view('musician-list');
 });
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
