@@ -38,7 +38,6 @@ class MusicianController extends Controller
      */
     public function store(Request $request)
     {
-        $role_musico = Role::where('name', 'musico')->first();
         $band = new Band([
             'country' => $request->get('country'),
             'name' => $request->get('name'),
@@ -57,10 +56,9 @@ class MusicianController extends Controller
             'concerts' => $request->get('concerts'),
             'hosting' => $request->get('hosting'),
             'amplification' => $request->get('amplification'),
-            'id_admin_band' => $role_musico->users->first()->id
+            'id_admin_band' => auth()->user()->id,
         ]);
         $band->save();
-        //return redirect('/shares')->with('success', 'Stock has been added');
         return redirect('/');
     }
 

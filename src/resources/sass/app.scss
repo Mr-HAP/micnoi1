@@ -162,7 +162,14 @@ a, a:visited, a:active {
     z-index: 1;
     border-radius: 10px;
   }
-
+  .dropdown-menu-top {
+    background-color: #323131d4 !important;
+    border-radius: 0rem !important;
+  }
+  .dropdown-item:hover, .dropdown-item:focus {
+    color: #ceed23 !important;
+    background-color: #323131d4 !important;
+  }
   @media (pointer: coarse) and (hover: none) {
     div.video {
       background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;

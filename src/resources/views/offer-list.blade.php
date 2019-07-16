@@ -8,12 +8,14 @@
         <div class="row mb-0">
             <nav class="col-12 px-0">
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a class="col-4 text-center nav-item nav-link active" id="nav-locales-tab" data-toggle="tab" href="#nav-locales"
+                    <a class="col-4 text-center nav-item nav-link active" id="nav-locales-tab" data-toggle="tab"
+                       href="#nav-locales"
                        role="tab" aria-controls="nav-locales" aria-selected="true">
                         <span class="accentColor"> L</span>OCALES
                     </a>
 
-                    <a class="col-4 text-center nav-item nav-link" id="nav-invitados-tab" data-toggle="tab" href="#nav-invitados"
+                    <a class="col-4 text-center nav-item nav-link" id="nav-invitados-tab" data-toggle="tab"
+                       href="#nav-invitados"
                        role="tab" aria-controls="nav-invitados" aria-selected="false">
                         <span class="accentColor"> I</span>NVITADOS
                     </a>
@@ -28,7 +30,7 @@
             <div class="tab-pane fade show active" id="nav-locales" role="tabpanel" aria-labelledby="nav-locales-tab">
                 <div class="row box1 mb-2 py-5">
                     <div class="col text-center">
-                        <h3>MUSICOS Y BANDAS <span class="accentColor">LOCALES</span> </h3>
+                        <h3>MUSICOS Y BANDAS <span class="accentColor">LOCALES</span></h3>
                         <hr>
                         <span>Y, viéndole don Quijote de aquella manera, con muestras de tanta tristeza,
                     le dijo: Sábete, Sancho, que no es un hombre más que otro si no hace más que otro. Todas estas borrascas que nos suceden son
@@ -43,7 +45,8 @@
                             <div class="card mb-1">
                                 <div class="row no-gutters">
                                     <div class="col-auto">
-                                        <img src="{{$offer->photo}}" width="300px" height="300px" class="img-fluid" alt="">
+                                        <img src="{{$offer->photo}}" width="300px" height="300px" class="img-fluid"
+                                             alt="">
                                     </div>
                                     <div class="col">
                                         <div class="card-block px-2">
@@ -61,7 +64,7 @@
 
             <div class="tab-pane fade" id="nav-mapa" role="tabpanel" aria-labelledby="nav-mapa-tab">
                 <div class="col text-center">
-                    <h3>MUSICOS Y BANDAS <span class="accentColor">INVITADOS</span> </h3>
+                    <h3>MUSICOS Y BANDAS <span class="accentColor">INVITADOS</span></h3>
                     <hr>
                     <span>Y, viéndole don Quijote de aquella manera, con muestras de tanta tristeza,
                     le dijo: Sábete, Sancho, que no es un hombre más que otro si no hace más que otro. Todas estas borrascas que nos suceden son

@@ -14,4 +14,5 @@ class Offer extends Model
     protected $fillable = [
         'user_id','title', 'description', 'photo','create_at', 'update_at',
     ];
+    protected $primaryKey = 'offer_id';
 }

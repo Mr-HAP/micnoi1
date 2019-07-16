@@ -11,6 +11,6 @@ class InstrumentsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Instrument::class, 10)->create();
     }
 }
