@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Offer;
+
 use Illuminate\Http\Request;
+use vendor\project\StatusTest;
 
 class OfferController extends Controller
 {
@@ -17,6 +19,15 @@ class OfferController extends Controller
         $offers = Offer::all();
         return view('offer-list', compact('offers'));
     }
+    /**
+     * Show a listing of offers from the same owner.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showById()
+    {
+//
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -25,7 +36,7 @@ class OfferController extends Controller
      */
     public function create()
     {
-        //
+        return view('create-offer');
     }
 
     /**
@@ -36,7 +47,16 @@ class OfferController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $offer = new Offer([
+
+            'user_id' => auth()->user()->id,
+            'title'=> $request->get('title'),
+            'description' => $request->get('description'),
+//            'photo'=> $request->get('photo'),
+            'photo'=> 'http://lorempixel.com/400/200/',
+        ]);
+        $offer->save();
+        return redirect('offer-list/');
     }
 
     /**
@@ -58,7 +78,8 @@ class OfferController extends Controller
      */
     public function edit($id)
     {
-        //
+        $offer = Offer::find($id);
+        return view('create-offer',compact('offer'));
     }
 
     /**
@@ -70,7 +91,9 @@ class OfferController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $offer = Offer::find($id);
+        $offer->update($request->all());
+        return view('create-offer',compact('offer'));
     }
 
     /**
