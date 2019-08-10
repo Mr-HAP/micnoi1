@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            <form role="form" class="col-12" method="post" action="{{action('OfferController@update', $offer->offer_id)}}">
+            <form role="form" class="col-12" method="post" action="{{$action}}">
 
                 {{ csrf_field() }}
                 <div class="col-12 text-center p-3">

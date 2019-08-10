@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Offer;
-
 use Illuminate\Http\Request;
 use vendor\project\StatusTest;
+use Illuminate\Support\Facades\URL;
 
 class OfferController extends Controller
 {
@@ -36,7 +36,11 @@ class OfferController extends Controller
      */
     public function create()
     {
-        return view('create-offer');
+        $offer = new Offer();
+
+        $action = URL::to('offer/store');
+
+        return view('create-offer', compact('offer', 'action'));
     }
 
     /**
@@ -52,7 +56,7 @@ class OfferController extends Controller
             'user_id' => auth()->user()->id,
             'title'=> $request->get('title'),
             'description' => $request->get('description'),
-//            'photo'=> $request->get('photo'),
+//          'photo'=> $request->get('photo'),
             'photo'=> 'http://lorempixel.com/400/200/',
         ]);
         $offer->save();
@@ -78,8 +82,11 @@ class OfferController extends Controller
      */
     public function edit($id)
     {
+        $action = URL::to('/update-offer/update/' . $id);
+
         $offer = Offer::find($id);
-        return view('create-offer',compact('offer'));
+
+        return view('create-offer',compact('offer','action'));
     }
 
     /**
@@ -92,8 +99,12 @@ class OfferController extends Controller
     public function update(Request $request, $id)
     {
         $offer = Offer::find($id);
+
         $offer->update($request->all());
-        return view('create-offer',compact('offer'));
+
+        $action = URL::to('/update-offer/update/' . $id);
+
+        return view('create-offer',compact('offer','action'));
     }
 
     /**
