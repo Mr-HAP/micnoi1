@@ -1,7 +1,4 @@
 <template>
-    <!--<div class="container">
-        <img :src="'/img/micnoi_logo.png'">
-    </div>-->
     <b-navbar id="top-menu" class="w-100">
         <b-navbar-brand class="w-15" href="/">
             <img :src="'/img/micnoi-logo.png'">
@@ -39,7 +36,6 @@
 
 <style lang="scss" scoped>
 #top-menu {
-    vertical-align: center;
 
     .items-menu a{
         color: #ffffff;

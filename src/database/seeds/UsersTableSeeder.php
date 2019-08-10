@@ -47,7 +47,20 @@ class UsersTableSeeder extends Seeder
         $user->save();
         $user->roles()->attach($role_musico);
 
-        factory(App\User::class, 10)->create();
+        $user = new User();
+        $user->name = 'Musico-2';
+        $user->email = 'musico2@musico.cl';
+        $user->password = bcrypt('123');
+        $user->email_verified_at = now();
+        $user->remember_token = Str::random(10);
+        $user->save();
+        $user->roles()->attach($role_musico);
+
+        factory(App\User::class, 10)
+            ->create()
+            ->each(function (User $user) use ($role_fan) {
+                $user->roles()->attach($role_fan);
+            });
 
     }
 }
