@@ -10,41 +10,24 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-/* --- Generic Routes --- */
+
 // inicio
 Route::get('/', function () {
     return view('home');
 });
+// Home - return view home
+Route::get('/home', 'HomeController@index')->name('home');
 
 //Sobre Micnoi
 Route::get('/about-us', function () {
     return view('about');
 });
-// Home - return view home
-Route::get('/home', 'HomeController@index')->name('home');
 
 // Manage all routes Auth
 Auth::routes();
 
 //Logout User - Return Home
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
-
-/* --- Musician Routes --- */
-//list musician
-Route::get('/musician-list', 'MusicianController@index');
-
-//Edit profile musician
-Route::get('/profile-musician/{id}', 'MusicianController@edit');
-
-//Update profile musician
-Route::post('/profile-musician/update/{id}', 'MusicianController@update');
-
-//Create musician/Fan
-Route::get('/create/', 'MusicianController@create');
-
-//Store Musician
-Route::post('/musician/store', 'MusicianController@store');
+Route::get('logout', 'LoginController@logout');
 
 
 /* --- Fans Routes --- */
@@ -53,19 +36,36 @@ Route::get('/signup-fans', function () {
     return view('fans');
 });
 
-/* --- Offers Routes --- */
+//list musician
+Route::get('/musician-list', 'MusicianController@index');
 //Offers List
 Route::get('/offer-list', 'OfferController@index');
 
-// Create Offer - return view form
-Route::get('/create-offer/', 'OfferController@create');
 
-//Offer Musician
-Route::post('/offer/store', 'OfferController@store');
 
-//Edit Offer
-Route::get('/offer/edit/{id}', 'OfferController@edit');
+Route::group(
+    [
+        'middleware' => ['role:musico'],
+    ],
+    function (){
+        //Edit profile musician, Return View
+        Route::get('/profile-musician/{id}', 'MusicianController@edit');
+        //Update profile musician
+        Route::post('/profile-musician/update/{id}', 'MusicianController@update');
+        //Create musician, Return View
+        Route::get('/create/', 'MusicianController@create');
+        //Store Musician
+        Route::post('/musician/store', 'MusicianController@store');
 
-//Update Offer
-Route::post('/update-offer/update/{id}', 'OfferController@update');
-
+        // Create Offer, return view
+        Route::get('/create-offer/', 'OfferController@create');
+        //Offer Musician
+        Route::post('/offer/store', 'OfferController@store');
+        //Edit Offer, Return View
+        Route::get('/offer/edit/{id}', 'OfferController@edit');
+        //Update Offer
+        Route::post('/update-offer/update/{id}', 'OfferController@update');
+        //Return myOffers
+        Route::get('/my-offers', 'OfferController@showById');
+    }
+);

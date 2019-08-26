@@ -10678,7 +10678,7 @@ a:active {
   /******** Estilos Menu ************/
   /********* Estilos Contenido ***********/
   /**************VIDEO PORTADA ******************/
-  /************************ - FORMULARRIOS - ************************************/
+  /****************** - FORMULARRIOS - ***************************/
   /****************** -  Cards List - *********************/
   /****************** -  Tabs - List - *********************/
 }
@@ -10818,6 +10818,17 @@ a:active {
   opacity: 0.5;
   z-index: 1;
   border-radius: 10px;
+}
+
+#app .dropdown-menu-top {
+  background-color: #323131d4 !important;
+  border-radius: 0rem !important;
+}
+
+#app .dropdown-item:hover,
+#app .dropdown-item:focus {
+  color: #ceed23 !important;
+  background-color: #323131d4 !important;
 }
 
 @media (pointer: coarse) and (hover: none) {
