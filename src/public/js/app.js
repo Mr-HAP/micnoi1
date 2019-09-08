@@ -1821,9 +1821,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'TopMenu',
   data: function data() {
@@ -29355,7 +29352,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#top-menu[data-v-10bba8f4] {\n  vertical-align: center;\n}\n#top-menu .items-menu a[data-v-10bba8f4] {\n  color: #ffffff;\n}", ""]);
+exports.push([module.i, "#top-menu .items-menu a[data-v-10bba8f4] {\n  color: #ffffff;\n}", ""]);
 
 // exports
 
@@ -60717,13 +60714,27 @@ var render = function() {
               staticClass: "items-menu d-flex flex-row justify-content-between"
             },
             [
-              _c("b-nav-item", { staticClass: "p-2" }, [_vm._v("# INICIO")]),
+              _c("b-nav-item", { staticClass: "p-2", attrs: { href: "/" } }, [
+                _vm._v("# INICIO")
+              ]),
               _vm._v(" "),
-              _c("b-nav-item", { staticClass: "p-2" }, [_vm._v("# MUSICXS")]),
+              _c(
+                "b-nav-item",
+                { staticClass: "p-2", attrs: { href: "/musician-list" } },
+                [_vm._v("# MUSICXS")]
+              ),
               _vm._v(" "),
-              _c("b-nav-item", { staticClass: "p-2" }, [_vm._v("# PLAYLIST")]),
+              _c(
+                "b-nav-item",
+                { staticClass: "p-2", attrs: { href: "/offer-list" } },
+                [_vm._v("# OFFERS")]
+              ),
               _vm._v(" "),
-              _c("b-nav-item", { staticClass: "p-2" }, [_vm._v("# AYUDA")])
+              _c(
+                "b-nav-item",
+                { staticClass: "p-2", attrs: { href: "/help" } },
+                [_vm._v("# AYUDA")]
+              )
             ],
             1
           ),
@@ -60734,9 +60745,14 @@ var render = function() {
               staticClass: "items-menu d-flex flex-row justify-content-between"
             },
             [
-              _c("b-nav-item", { staticClass: "p-2" }, [
-                _vm._v("# QUIENES SOMOS")
-              ]),
+              _c(
+                "b-nav-item",
+                {
+                  staticClass: "p-2",
+                  attrs: { href: "/about-us", to: "/about-us" }
+                },
+                [_vm._v("# QUIENES SOMOS")]
+              ),
               _vm._v(" "),
               _c("b-nav-item", { staticClass: "p-2" }, [_vm._v("# FANS")]),
               _vm._v(" "),

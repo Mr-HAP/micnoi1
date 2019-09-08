@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Offer;
+use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
-use vendor\project\StatusTest;
 use Illuminate\Support\Facades\URL;
+
 
 class OfferController extends Controller
 {
@@ -26,7 +27,9 @@ class OfferController extends Controller
      */
     public function showById()
     {
-//
+        $offers = Offer::where('user_id', auth()->user()->id)->get();
+        //dd($offers);
+        return view('offer-list', compact('offers'));
     }
 
     /**
@@ -51,16 +54,33 @@ class OfferController extends Controller
      */
     public function store(Request $request)
     {
-        $offer = new Offer([
+        $resultUpload = $this->fileUpload($request, 'photo','img-offers');
+        if ($resultUpload != false and $resultUpload != null) {
+            $offer = new Offer([
+                'user_id' => auth()->user()->id,
+                'title' => $request->get('title'),
+                'description' => $request->get('description'),
+                'photo' => $resultUpload,
+            ]);
+            $offer->save();
+            return redirect('offer-list/');
+        }
+    }
 
-            'user_id' => auth()->user()->id,
-            'title'=> $request->get('title'),
-            'description' => $request->get('description'),
-//          'photo'=> $request->get('photo'),
-            'photo'=> 'http://lorempixel.com/400/200/',
+    public function fileUpload(Request $request,$inputName,$path) {
+
+        $this->validate($request, [
+            $inputName => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        $offer->save();
-        return redirect('offer-list/');
+
+        if ($request->hasFile($inputName)) {
+            $image = $request->file($inputName);
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('/' . $path), $name);
+            $finalPath = '/' . $path . '/' . $name ;
+            return $finalPath;
+        }
+        return false;
     }
 
     /**

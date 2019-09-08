@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            <form role="form" class="col-12" method="post" action="{{$action}}">
+            <form role="form" class="col-12" method="post" action="{{$action}}" enctype="multipart/form-data">
 
                 {{ csrf_field() }}
                 <div class="col-12 text-center p-3">
@@ -43,7 +43,7 @@
                     </div>
                     <div class="form-row mt-4">
                         <label for="photo" class="col-sm-4 col-form-label"><h4>Adjunta una imagen/Flyer</h4></label>
-                        <input type="file" class="col-sm-8 form-control-file" id="photo" name="photo" value="/">
+                        <input type="file" class="col-sm-8 form-control-file" name="photo" >
                     </div>
                 </div>
                 <div class="col-12 text-center">

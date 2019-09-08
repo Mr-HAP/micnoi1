@@ -8,13 +8,13 @@
         </b-navbar-nav>
         <div class="d-flex flex-column w-100">
             <b-navbar-nav class="items-menu d-flex flex-row justify-content-between">
-                <b-nav-item class="p-2"># INICIO</b-nav-item>
-                <b-nav-item class="p-2"># MUSICXS</b-nav-item>
-                <b-nav-item class="p-2"># PLAYLIST</b-nav-item>
-                <b-nav-item class="p-2"># AYUDA</b-nav-item>
+                <b-nav-item class="p-2" href="/"># INICIO</b-nav-item>
+                <b-nav-item class="p-2" href="/musician-list"># MUSICXS</b-nav-item>
+                <b-nav-item class="p-2" href="/offer-list"># OFFERS</b-nav-item>
+                <b-nav-item class="p-2" href="/help"># AYUDA</b-nav-item>
             </b-navbar-nav>
             <b-navbar-nav class="items-menu d-flex flex-row justify-content-between">
-                <b-nav-item class="p-2"># QUIENES SOMOS</b-nav-item>
+                <b-nav-item class="p-2" href="/about-us" to="/about-us"># QUIENES SOMOS</b-nav-item>
                 <b-nav-item class="p-2"># FANS</b-nav-item>
                 <b-nav-item class="p-2"># BLOG</b-nav-item>
                 <b-nav-item class="p-2"># PUBLICIDAD</b-nav-item>

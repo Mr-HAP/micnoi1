@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row my-2 text-center">
-            <h1 class="exp-txt30 title-content">MUSICXS</h1>
+            <h1 class="exp-txt30 title-content">OFERTAS</h1>
         </div>
         <div class="row mb-0">
             <nav class="col-12 px-0">
@@ -36,11 +36,13 @@
                     le dijo: Sábete, Sancho, que no es un hombre más que otro si no hace más que otro. Todas estas borrascas que nos suceden son
                     señales de que presto ha de serenar el tiempo y han de sucedernos bien las cosas; porque no es posible que el mal ni el bien
                     sean durables, y de aquí se sigue que, habiendo durado mucho el mal, el bien está ya cerca</span>
+                        @guest
+                            <a href="/create-offer" class="btn btn-success">Crear un Anuncio</a>
+                        @endguest
                     </div>
                 </div>
                 <div class="row box1 my-2">
                     <div class="col-12 text-center py-5">
-
                         @foreach($offers as $offer)
                             <div class="card mb-1">
                                 <div class="row no-gutters">
