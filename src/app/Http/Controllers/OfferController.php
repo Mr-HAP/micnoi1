@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Offer;
+use App\State;
 use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\URL;
 
 
@@ -15,10 +17,33 @@ class OfferController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
+    {
+        $offers = null;
+        $states = State::all();
+        $action = URL::to('offer-list');
+
+        $offers = Offer::all();
+
+        if($request->get('state')!=null & $request->get('state')!=''){
+           $offers = $this->filter($request->get('state'));
+        }
+
+        return view('offer-list', compact('offers', 'states', 'action'));
+    }
+    /**
+     * Display a listing offers by country/state.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    private function filter($stateid)
     {
         $offers = Offer::all();
-        return view('offer-list', compact('offers'));
+        $offerFilter = $offers->filter(function($value, $key) use ($stateid){
+            return $value['state_id'] == $stateid;
+        });
+
+        return $offerFilter->all();
     }
     /**
      * Show a listing of offers from the same owner.
@@ -40,10 +65,10 @@ class OfferController extends Controller
     public function create()
     {
         $offer = new Offer();
-
+        $states = State::all();
         $action = URL::to('offer/store');
 
-        return view('create-offer', compact('offer', 'action'));
+        return view('create-offer', compact('offer', 'action','states'));
     }
 
     /**
@@ -59,6 +84,7 @@ class OfferController extends Controller
             $offer = new Offer([
                 'user_id' => auth()->user()->id,
                 'title' => $request->get('title'),
+                'state_id' => $request->get('state'),
                 'description' => $request->get('description'),
                 'photo' => $resultUpload,
             ]);

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Offer extends Model
+class Country extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,7 +12,13 @@ class Offer extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id','title', 'state_id', 'description', 'photo','create_at', 'update_at',
+        'country'
     ];
-    protected $primaryKey = 'offer_id';
+
+    public $timestamps = false;
+
+    public function states()
+    {
+        return $this->hasMany('App\State')->withDefault();
+    }
 }

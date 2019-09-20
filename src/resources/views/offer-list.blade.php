@@ -3,75 +3,55 @@
 @section('content')
     <div class="container">
         <div class="row my-2 text-center">
-            <h1 class="exp-txt30 title-content">OFERTAS</h1>
-        </div>
-        <div class="row mb-0">
-            <nav class="col-12 px-0">
-                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a class="col-4 text-center nav-item nav-link active" id="nav-locales-tab" data-toggle="tab"
-                       href="#nav-locales"
-                       role="tab" aria-controls="nav-locales" aria-selected="true">
-                        <span class="accentColor"> L</span>OCALES
-                    </a>
-
-                    <a class="col-4 text-center nav-item nav-link" id="nav-invitados-tab" data-toggle="tab"
-                       href="#nav-invitados"
-                       role="tab" aria-controls="nav-invitados" aria-selected="false">
-                        <span class="accentColor"> I</span>NVITADOS
-                    </a>
-
-                    <a class="col-4 text-center nav-item nav-link" id="nav-mapa-tab" data-toggle="tab" href="#nav-mapa"
-                       role="tab" aria-controls="nav-mapa" aria-selected="false"><span class="accentColor"> M</span>APA
-                    </a>
-                </div>
-            </nav>
+            <h1 class="exp-txt30 title-content">OFFERS</h1>
         </div>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-locales" role="tabpanel" aria-labelledby="nav-locales-tab">
                 <div class="row box1 mb-2 py-5">
                     <div class="col text-center">
-                        <h3>MUSICOS Y BANDAS <span class="accentColor">LOCALES</span></h3>
+                        <h3>MUSICIAN & BANDS <span class="accentColor">OFFERS</span></h3>
                         <hr>
-                        <span>Y, viéndole don Quijote de aquella manera, con muestras de tanta tristeza,
-                    le dijo: Sábete, Sancho, que no es un hombre más que otro si no hace más que otro. Todas estas borrascas que nos suceden son
-                    señales de que presto ha de serenar el tiempo y han de sucedernos bien las cosas; porque no es posible que el mal ni el bien
-                    sean durables, y de aquí se sigue que, habiendo durado mucho el mal, el bien está ya cerca</span>
-                        @guest
-                            <a href="/create-offer" class="btn btn-success">Crear un Anuncio</a>
-                        @endguest
+                        <form role="form" class="col-12" method="get" action="{{$action}}" >
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <select id="country" name="country" class="form-control">
+                                        <option selected value="1">Chile</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <select id="inputState" name="state" class="form-control">
+                                        <option selected>Choose State...</option>
+                                        @foreach($states as $state)
+                                            <option value="{{$state->state_id}}">{{$state->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input class="btn btn-success btn-lg" type="submit" value="Search">
+                                </div>
+                            </div>
+                        </form>
+                        @auth()
+                            <a href="/create-offer" class="btn btn-success"> + Create Offer</a>
+                        @endauth
                     </div>
                 </div>
                 <div class="row box1 my-2">
-                    <div class="col-12 text-center py-5">
-                        @foreach($offers as $offer)
-                            <div class="card mb-1">
-                                <div class="row no-gutters">
-                                    <div class="col-auto">
-                                        <img src="{{$offer->photo}}" width="300px" height="300px" class="img-fluid"
-                                             alt="">
-                                    </div>
-                                    <div class="col">
-                                        <div class="card-block px-2">
-                                            <h4 class="card-title">{{$offer->title}}</h4>
-                                            <p class="card-text">{{$offer->description}}</p>
-                                            <a href="#" class="btn btn-primary">Ver el anuncio</a>
-                                        </div>
-                                    </div>
+                    <div class="card-columns">
+                        @foreach($offers->sortByDesc('offer_id') as $offer)
+                            @php
+                                $stateOffer = $states->where('state_id', $offer->state_id)->pluck('name');
+                            @endphp
+                            <div class="card">
+                                <img src="{{$offer->photo}}" class="card-img-top">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$offer->title}}</h5>
+                                    <p class="card-text">{{$offer->description}}</p>
+                                    <p class="card-text"><small class="text-muted">{{$stateOffer[0]}}</small></p>
                                 </div>
                             </div>
                         @endforeach
                     </div>
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="nav-mapa" role="tabpanel" aria-labelledby="nav-mapa-tab">
-                <div class="col text-center">
-                    <h3>MUSICOS Y BANDAS <span class="accentColor">INVITADOS</span></h3>
-                    <hr>
-                    <span>Y, viéndole don Quijote de aquella manera, con muestras de tanta tristeza,
-                    le dijo: Sábete, Sancho, que no es un hombre más que otro si no hace más que otro. Todas estas borrascas que nos suceden son
-                    señales de que presto ha de serenar el tiempo y han de sucedernos bien las cosas; porque no es posible que el mal ni el bien
-                    sean durables, y de aquí se sigue que, habiendo durado mucho el mal, el bien está ya cerca</span>
                 </div>
             </div>
         </div>

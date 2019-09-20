@@ -33,6 +33,22 @@
                             <input type="text" class="form-control" id="title" name="title" placeholder="Titulo del aviso" value="{{$offer->title}}">
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label for="country" class="col-sm-3 col-form-label"><h4>Lugar</h4></label>
+                        <div class="form-group col-md-4">
+                            <select id="country" name="country" class="form-control">
+                                <option selected value="1">Chile</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-5">
+                            <select id="inputState" name="state" class="form-control">
+                                <option selected>Choose State...</option>
+                                @foreach($states as $state)
+                                    <option value="{{$state->state_id}}">{{$state->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-row">
                         <label for="description" class="col-sm-3 col-form-label"><h4>Aviso</h4></label>
                         <div class="col-sm-9">
