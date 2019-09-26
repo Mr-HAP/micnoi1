@@ -39,7 +39,8 @@ Route::get('/signup-fans', function () {
 //list musician
 Route::get('/musician-list', 'MusicianController@index');
 //Offers List
-Route::get('/offer-list', 'OfferController@index');
+//Route::get('/offer-list', 'OfferController@index');
+Route::get('/offer-list/{stateid?}/{countryid?}', 'OfferController@index');
 
 
 

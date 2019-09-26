@@ -17,5 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BandsTableSeeder::class);
         $this->call(UserDetailsTableSeeder::class);
         $this->call(InstrumentsTableSeeder::class);
+        $this->call(CountrysTableSeeder::class);
+        $this->call(StatesTableSeeder::class);
     }
 }
