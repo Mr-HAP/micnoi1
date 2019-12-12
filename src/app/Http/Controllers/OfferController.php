@@ -34,7 +34,7 @@ class OfferController extends Controller
     /**
      * Display a listing offers by country/state.
      *
-     * @return \Illuminate\Http\Response
+     * @return Collection
      */
     private function filter($stateid)
     {
@@ -43,7 +43,7 @@ class OfferController extends Controller
             return $value['state_id'] == $stateid;
         });
 
-        return $offerFilter->all();
+        return $offerFilter;
     }
     /**
      * Show a listing of offers from the same owner.
