@@ -67,6 +67,6 @@ Route::group(
         //Update Offer
         Route::post('/update-offer/update/{id}', 'OfferController@update');
         //Return myOffers
-        Route::get('/my-offers', 'OfferController@showById');
+        Route::get('/my-offers/{stateid?}/{countryid?}', 'OfferController@showById');
     }
 );

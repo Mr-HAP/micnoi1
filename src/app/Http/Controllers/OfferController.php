@@ -26,7 +26,7 @@ class OfferController extends Controller
         $offers = Offer::all();
 
         if($request->get('state')!=null & $request->get('state')!=''){
-           $offers = $this->filter($request->get('state'));
+           $offers = $this->filter($request->get('state'),$offers);
         }
 
         return view('offer-list', compact('offers', 'states', 'action'));
@@ -36,9 +36,8 @@ class OfferController extends Controller
      *
      * @return Collection
      */
-    private function filter($stateid)
+    private function filter($stateid,$offers)
     {
-        $offers = Offer::all();
         $offerFilter = $offers->filter(function($value, $key) use ($stateid){
             return $value['state_id'] == $stateid;
         });
@@ -50,11 +49,18 @@ class OfferController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showById()
+    public function showById(Request $request)
     {
+        $offers = null;
+        $states = State::all();
+        $action = URL::to('my-offers');
         $offers = Offer::where('user_id', auth()->user()->id)->get();
-        //dd($offers);
-        return view('offer-list', compact('offers'));
+
+        if($request->get('state')!=null & $request->get('state')!=''){
+            $offers = $this->filter($request->get('state'), $offers);
+        }
+
+        return view('offer-list', compact('offers', 'states', 'action'));
     }
 
     /**

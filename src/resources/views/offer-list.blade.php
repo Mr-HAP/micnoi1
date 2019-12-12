@@ -3,13 +3,13 @@
 @section('content')
     <div class="container">
         <div class="row my-2 text-center">
-            <h1 class="exp-txt30 title-content">OFFERS</h1>
+            <h1 class="exp-txt30 title-content">Ofertas</h1>
         </div>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-locales" role="tabpanel" aria-labelledby="nav-locales-tab">
                 <div class="row box1 mb-2 py-5">
                     <div class="col text-center">
-                        <h3>MUSICIAN & BANDS <span class="accentColor">OFFERS</span></h3>
+                        <h3><span class="accentColor">OFERTAS</span>  MUSICXS & BANDAS</h3>
                         <hr>
                         <form role="form" class="col-12" method="get" action="{{$action}}" >
                             <div class="form-row">
@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <select id="inputState" name="state" class="form-control">
-                                        <option selected>Choose State...</option>
+                                        <option selected value="">Todas las regiones...</option>
                                         @foreach($states as $state)
                                             <option value="{{$state->state_id}}">{{$state->name}}</option>
                                         @endforeach
