@@ -49,12 +49,20 @@ Route::group(
         'middleware' => ['role:musico'],
     ],
     function (){
-        //Edit profile musician, Return View
-        Route::get('/profile-musician/{id}', 'MusicianController@edit');
-        //Update profile musician
-        Route::post('/profile-musician/update/{id}', 'MusicianController@update');
+        //Return list same owner
+        Route::get('/my-profile/', 'UserController@index');
+
+        //Return list same owner
+        Route::get('/my-bands/', 'MusicianController@showById');
+
+        //Edit band, Return View
+        Route::get('/band/{id}', 'MusicianController@edit');
+        //Update band
+        Route::post('/band/update/{id}', 'MusicianController@update');
+
         //Create musician, Return View
         Route::get('/create/', 'MusicianController@create');
+
         //Store Musician
         Route::post('/musician/store', 'MusicianController@store');
 

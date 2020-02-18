@@ -19,20 +19,23 @@
                 </div>
                 <div class="row box1 my-2">
                     <div class="card-group">
-                        @foreach($musicians as $musician)
+                        @foreach($bands as $band)
                         <div class="card">
-                            <img class="card-img-top" src="{{$musician->photo}}" alt="Card image cap">
+                            <img class="card-img-top" src="{{$band->photo}}" alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title">{{$musician->name}}</h5>
+                                <h5 class="card-title">{{$band->name}}</h5>
                                 <p class="card-text">
                                     <ul>
-                                        <li>Country: {{$musician->country}}</li>
-                                        <li>City: {{$musician->city}}, {{$musician->region}}</li>
+                                        <li>Country: {{$band->country}}</li>
+                                        <li>City: {{$band->city}}, {{$band->region}}</li>
                                     </ul>
                                 </p>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">Last updated 3 mins ago</small>
+                                @if (Auth::user()->id == $band->id_admin_band)
+                                    <a href="/band/{{$band->band_id}}" class="btn-lg btn-warning">Editar</a>
+                                @endif
                             </div>
                         </div>
                         @endforeach

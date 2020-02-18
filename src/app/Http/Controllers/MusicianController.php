@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Band;
 use App\Offer;
 use App\Role;
+use App\State;
 use Illuminate\Http\Request;
 
 class MusicianController extends Controller
@@ -16,8 +17,9 @@ class MusicianController extends Controller
      */
     public function index()
     {
-        $musicians = Band::all();
-        return view('musician-list', compact('musicians'));
+        $bands = Band::all();
+
+        return view('musician-list', compact('bands'));
     }
 
     /**
@@ -27,7 +29,8 @@ class MusicianController extends Controller
      */
     public function create()
     {
-        return view('create');
+        $states = State::all();
+        return view('create', compact('states'));
     }
 
     /**
@@ -73,6 +76,18 @@ class MusicianController extends Controller
     }
 
     /**
+     * Show a listing of Bands from the same owner.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showById()
+    {
+        $bands = Band::where('id_admin_band', auth()->user()->id)->get();
+
+        return view('musician-list', compact('bands'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -81,7 +96,7 @@ class MusicianController extends Controller
     public function edit($id)
     {
         $band = Band::find($id);
-        return view('musician',compact('band'));
+        return view('band',compact('band'));
     }
 
     /**
@@ -95,7 +110,7 @@ class MusicianController extends Controller
     {
         $band = Band::find($id);
         $band->update($request->all());
-        return view('musician',compact('band'));
+        return view('band',compact('band'));
     }
 
     /**

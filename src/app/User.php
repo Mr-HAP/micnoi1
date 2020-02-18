@@ -66,7 +66,7 @@ class User extends Authenticatable
         return false;
     }
 
-    public function hasRole($role)
+    public function hasRole(string $role)
     {
         if ($this->roles()->where('name', $role)->first()) {
             return true;
@@ -75,7 +75,7 @@ class User extends Authenticatable
     }
     public function isAdmin()
     {
-        if ($this->role == 1)
+        if ($this->role === 1)
         {
             return true;
         }
