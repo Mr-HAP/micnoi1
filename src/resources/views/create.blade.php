@@ -13,12 +13,12 @@
         <div class="row mb-0">
             <nav class="col-12 px-0">
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a class="col-4 text-center nav-item nav-link active" id="nav-fans-tab" data-toggle="tab"
+    {{--                <a class="col-4 text-center nav-item nav-link active" id="nav-fans-tab" data-toggle="tab"
                        href="#nav-fans"
                        role="tab" aria-controls="nav-fans" aria-selected="true">
                         <span class="accentColor"> F</span>ANS
-                    </a>
-                    <a class="col-4 text-center nav-item nav-link" id="nav-musicos-tab" data-toggle="tab"
+                    </a>--}}
+                    <a class="col-4 text-center nav-item nav-link active" id="nav-musicos-tab" data-toggle="tab"
                        href="#nav-musicos"
                        role="tab" aria-controls="nav-musicos" aria-selected="false">
                         <span class="accentColor"> M</span>XSICOS
@@ -28,7 +28,7 @@
         </div>
         <div class="tab-content" id="nav-tabContent">
 
-            <div class="tab-pane fade show active" id="nav-fans" role="tabpanel" aria-labelledby="nav-fans-tab">
+{{--            <div class="tab-pane fade show active" id="nav-fans" role="tabpanel" aria-labelledby="nav-fans-tab">
                 <div class="row box1 mb-2 py-5">
                     <div class="col text-center">
                         <span>Completa tu perfil de usuario para que puedas encontrar a los mejores musicos y bandas mas cercanos a ti.</span>
@@ -227,9 +227,9 @@
                         <button type="submit" class="col-12 btn btn-success mb-2">Publicar</button>
                     </div>
                 </form>
-            </div>
+            </div>--}}
 
-            <div class="tab-pane fade" id="nav-musicos" role="tabpanel" aria-labelledby="nav-musicos-tab">
+            <div class="tab-pane fade show active" id="nav-musicos" role="tabpanel" aria-labelledby="nav-musicos-tab">
                 <div class="row box1 mb-2 py-5">
                     <div class="col text-center">
                         <span>Completa tu Perfil como <strong>MUSICX</strong> Cuentanos si eres una Banda o solista, y tu trayectoria musical, asi podremos acercar a mas fans a tu perfil.</span>
@@ -268,9 +268,13 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
-                                            <label for="inputState">Region</label>
-                                            <input type="text" class="form-control" name="region"
-                                                   placeholder="metropolis" value="">
+                                            <label for="region">Region</label>
+                                            <select id="region" name="region" class="form-control">
+                                                <option selected value="">Todas las regiones...</option>
+                                                @foreach($states as $state)
+                                                    <option value="{{$state->state_id}}">{{$state->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="inputState">Ciudad</label>
@@ -280,7 +284,7 @@
                                         <div class="form-group col-md-4">
                                             <label for="inputState">Pais</label>
                                             <input type="text" class="form-control" name="country" placeholder="Chile"
-                                                   value="">
+                                                   value="Chile">
                                         </div>
                                     </div>
                                 </div>
@@ -380,11 +384,11 @@
                             </div>
                             <div class="row box1 mb-2 pb-lg-5">
                                 <div class="custom-file my-lg-5 py-lg-5 text-center">
-                                    <label class="hover-file" for="customFile">
+                                    <label class="hover-file" for="customFile" data-toggle="tooltip" data-placement="top" title="Proximamente">
                                         <h2><span class="accentColor">SUBIR VIDEO DE PRESENTACION</span></h2>
                                         <h3 class="exp-txt10">MUSICO O SOLISTA</h3>
                                     </label>
-                                    <input type="file" hidden="hidden" class="" name="customFile2">
+                                    {{--<input type="file" hidden="hidden" class="" name="customFile2">--}}
                                 </div>
                             </div>
                             <div class="row box1 mb-2 py-4">

@@ -113,7 +113,7 @@
                     {{ Auth::user()->name }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-top" aria-labelledby="dropdownMenuOffset">
-                    <a class="dropdown-item" href="/profile-musician/{{ Auth::user()->id }}">My Perfil</a>
+                    <a class="dropdown-item" href="/my-profile">My Perfil</a>
                     <a class="dropdown-item" href="/my-offers">My Offers</a>
                     <a class="dropdown-item" href="/my-bands">My Bands/Musicxs</a>
                 </div>
