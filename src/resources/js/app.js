@@ -44,3 +44,4 @@ Vue.component('top-menu-component', require('./components/TopMenuComponent.vue')
 const app = new Vue({
     el: '#app'
 });
+
