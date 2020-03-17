@@ -13,12 +13,18 @@
                         <hr>
                         <form role="form" class="col-12" method="get" action="{{$action}}" >
                             <div class="form-row">
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-3">
+                                    <select id="type" name="type" class="form-control">
+                                        <option selected value="offer">Ofreces un lugar para tocar</option>
+                                        <option selected value="request">Buscas un lugar para tocar</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
                                     <select id="country" name="country" class="form-control">
                                         <option selected value="1">Chile</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-3">
                                     <select id="inputState" name="state" class="form-control">
                                         <option selected value="">Todas las regiones...</option>
                                         @foreach($states as $state)
@@ -26,29 +32,38 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-3">
                                     <input class="btn btn-success btn-lg" type="submit" value="Search">
                                 </div>
                             </div>
                         </form>
                         @auth()
-                            <a href="/create-offer" class="btn btn-success"> + Create Offer</a>
+                            <a href="/createoffer1" class="btn btn-success"> + Create Offer</a>
                         @endauth
                     </div>
                 </div>
                 <div class="row box1 my-2">
                     <div class="card-columns">
-                        @foreach($offers->sortByDesc('offer_id') as $offer)
+                        @foreach($offers as $offer)
                             @php
                                 $stateOffer = $states->where('state_id', $offer->state_id)->pluck('name');
                             @endphp
                             <div class="card">
-                                <img src="{{$offer->photo}}" class="card-img-top">
+                                <img src="/storage/img-offer/{{$offer->photo}}" class="card-img-top">
                                 <div class="card-body">
                                     <h5 class="card-title">{{$offer->title}}</h5>
                                     <p class="card-text">{{$offer->description}}</p>
                                     <p class="card-text"><small class="text-muted">{{$stateOffer[0]}}</small></p>
                                 </div>
+                                @php
+                                    if( Auth::user()->id == $offer->user_id ){
+                                @endphp
+                                    <div class="card-footer">
+                                        <a type="button" href="/offer/edit/{{$offer->offer_id}}" class="btn btn-success">Editar</a>
+                                    </div>
+                                @php
+                                    }
+                                @endphp
                             </div>
                         @endforeach
                     </div>

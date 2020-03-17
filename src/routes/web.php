@@ -76,5 +76,15 @@ Route::group(
         Route::post('/update-offer/update/{id}', 'OfferController@update');
         //Return myOffers
         Route::get('/my-offers/{stateid?}/{countryid?}', 'OfferController@showById');
+
+        Route::get('/createoffer1', 'OfferController@createStep1')->name('offer');
+        Route::post('/createoffer1', 'OfferController@OffercreateStep1');
+        Route::get('/createoffer2', 'OfferController@createStep2');
+        Route::post('/createoffer2', 'OfferController@OffercreateStep2');
+        Route::get('/createoffer3', 'OfferController@createStep3');
+        Route::post('/createoffer3', 'OfferController@OffercreateStep3');
+        Route::post('/remove-image', 'OfferController@removeImage');
+        Route::post('/storeoffer', 'OfferController@store');
+        Route::get('/data', 'OfferController@index');
     }
 );
