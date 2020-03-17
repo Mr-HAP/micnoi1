@@ -9,14 +9,19 @@
             <div class="tab-pane fade show active" id="nav-locales" role="tabpanel" aria-labelledby="nav-locales-tab">
                 <div class="row box1 mb-2 py-5">
                     <div class="col text-center">
-                        <h3><span class="accentColor">OFERTAS</span>  MUSICXS & BANDAS</h3>
+                        <h3><span class="accentColor">OFERTAS</span> MUSICXS & BANDAS</h3>
                         <hr>
-                        <form role="form" class="col-12" method="get" action="{{$action}}" >
+                        <form role="form" class="col-12" method="get" action="{{$action}}">
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <select id="type" name="type" class="form-control">
-                                        <option selected value="offer">Ofreces un lugar para tocar</option>
-                                        <option selected value="request">Buscas un lugar para tocar</option>
+                                        <option value="">Todos los Avisos</option>
+                                        <option {{Request::get('type') == 'offer' ? 'selected' : ''}} value="offer">
+                                            Ofreces un lugar para tocar
+                                        </option>
+                                        <option {{Request::get('type') == 'request' ? 'selected' : ''}} value="request">
+                                            Buscas un lugar para tocar
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
@@ -28,7 +33,8 @@
                                     <select id="inputState" name="state" class="form-control">
                                         <option selected value="">Todas las regiones...</option>
                                         @foreach($states as $state)
-                                            <option value="{{$state->state_id}}">{{$state->name}}</option>
+                                            <option
+                                                {{Request::get('state') == $state->state_id ? 'selected' : ''}} value="{{$state->state_id}}">{{$state->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -43,11 +49,14 @@
                     </div>
                 </div>
                 <div class="row box1 my-2">
+                    @if ($offers->isEmpty())
+                        <div class="col text-center">
+                            <h4>No se encontraros Resultados</h4>
+                        </div>
+                    @endif
                     <div class="card-columns">
                         @foreach($offers as $offer)
-                            @php
-                                $stateOffer = $states->where('state_id', $offer->state_id)->pluck('name');
-                            @endphp
+                            @php $stateOffer = $states->where('state_id', $offer->state_id)->pluck('name'); @endphp
                             <div class="card">
                                 <img src="/storage/img-offer/{{$offer->photo}}" class="card-img-top">
                                 <div class="card-body">
@@ -55,15 +64,11 @@
                                     <p class="card-text">{{$offer->description}}</p>
                                     <p class="card-text"><small class="text-muted">{{$stateOffer[0]}}</small></p>
                                 </div>
-                                @php
-                                    if( Auth::user()->id == $offer->user_id ){
-                                @endphp
-                                    <div class="card-footer">
-                                        <a type="button" href="/offer/edit/{{$offer->offer_id}}" class="btn btn-success">Editar</a>
-                                    </div>
-                                @php
-                                    }
-                                @endphp
+                                @if ( Auth::user()->id == $offer->user_id )
+                                <div class="card-footer">
+                                    <a type="button" href="/offer/edit/{{$offer->offer_id}}" class="btn btn-success">Editar</a>
+                                </div>
+                                @endif
                             </div>
                         @endforeach
                     </div>

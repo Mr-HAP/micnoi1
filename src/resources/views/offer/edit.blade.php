@@ -48,7 +48,7 @@
                     <div class="form-row">
                         <label for="description" class="col-sm-3 col-form-label"><h4>Aviso</h4></label>
                         <div class="col-sm-9">
-                            <textarea placeholder="Aviso... " class="form-control" id="description" name="description"rows="3">{{$offer->description}}</textarea>
+                            <textarea placeholder="Aviso... " class="form-control" id="description" name="description"rows="3" maxlength="299">{{$offer->description}}</textarea>
                         </div>
                     </div>
                     <div class="form-row mt-4">
