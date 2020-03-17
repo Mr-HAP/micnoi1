@@ -45,7 +45,7 @@ class OfferController extends Controller
      */
     private function filter($offers, $request)
     {
-        $filtered = null;
+        $filtered = $offers;
         if ($request->get('state') !== null && $request->get('state') !== '') {
             $filtered = $offers->where('state_id', '=', $request->get('state'));
         }
