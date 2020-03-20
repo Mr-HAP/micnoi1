@@ -10709,15 +10709,12 @@ a:active {
   padding-right: 50px;
 }
 
-#app .navbar-nav.items-menu.w-50 {
-  padding-left: 50px;
-  margin-left: -60px;
-  background: #000;
-  min-height: 80px;
-}
-
 #app .nav-item.p-2 {
   padding: 0 0.5rem !important;
+}
+
+#app nav#top-menu {
+  margin-bottom: 50px;
 }
 
 #app .navbar-light .navbar-brand {
@@ -10730,6 +10727,9 @@ a:active {
   font-size: 14pt;
   font-weight: 700;
   text-align: center;
+  padding-left: 50px;
+  margin-left: -60px;
+  background: #000;
 }
 
 #app main {

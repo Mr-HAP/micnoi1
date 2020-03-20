@@ -128,7 +128,7 @@
                 @endguest
             </nav>
         </div>
-        <div id="cabecera" class="row">
+        <div class="mx-ms-0 mx-md-5">
                 <top-menu-component></top-menu-component>
         </div>
     </header>

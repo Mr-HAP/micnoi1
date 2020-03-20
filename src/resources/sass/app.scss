@@ -51,17 +51,13 @@ a, a:visited, a:active {
     padding-right: 50px;
   }
 
-  .navbar-nav.items-menu.w-50 {
-    padding-left: 50px;
-    margin-left: -60px;
-    background: #000;
-    min-height: 80px;
-  }
-
   .nav-item.p-2{
     padding: 0 0.5rem !important;
   }
 
+  nav#top-menu{
+    margin-bottom: 50px;
+  }
   .navbar-light .navbar-brand { //Superponer el logo al contenido
     color: rgba(0, 0, 0, 0.9);
     z-index: 1000;
@@ -72,6 +68,9 @@ a, a:visited, a:active {
     font-size: 14pt;
     font-weight: 700;
     text-align: center;
+    padding-left: 50px;
+    margin-left: -60px;
+    background: #000;
   }
 
   /********* Estilos Contenido ***********/
