@@ -58,13 +58,15 @@
                         @foreach($offers as $offer)
                             @php $stateOffer = $states->where('state_id', $offer->state_id)->pluck('name'); @endphp
                             <div class="card">
-                                <img src="/storage/img-offer/{{$offer->photo}}" class="card-img-top">
+{{--                           TODO: change to folder path when we begin storing imgages in our server
+                                /storage/img-offer/--}}
+                                <img src="{{$offer->photo}}" class="card-img-top">
                                 <div class="card-body">
                                     <h5 class="card-title">{{$offer->title}}</h5>
                                     <p class="card-text">{{$offer->description}}</p>
                                     <p class="card-text"><small class="text-muted">{{$stateOffer[0]}}</small></p>
                                 </div>
-                                @if ( Auth::user()->id == $offer->user_id )
+                                @if (Auth::user() && Auth::user()->id == $offer->user_id)
                                 <div class="card-footer">
                                     <a type="button" href="/offer/edit/{{$offer->offer_id}}" class="btn btn-success">Editar</a>
                                 </div>
