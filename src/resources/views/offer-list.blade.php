@@ -3,13 +3,13 @@
 @section('content')
     <div class="container">
         <div class="row my-2 text-center">
-            <h1 class="exp-txt30 title-content">Ofertas</h1>
+            <h1 class="exp-txt30 title-content">Avisos</h1>
         </div>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-locales" role="tabpanel" aria-labelledby="nav-locales-tab">
                 <div class="row box1 mb-2 py-5">
                     <div class="col text-center">
-                        <h3><span class="accentColor">OFERTAS</span> MUSICXS & BANDAS</h3>
+                        <h3><span class="accentColor">AVISOS</span> MUSICXS & BANDAS</h3>
                         <hr>
                         <form role="form" class="col-12" method="get" action="{{$action}}">
                             <div class="form-row">
@@ -44,7 +44,7 @@
                             </div>
                         </form>
                         @auth()
-                            <a href="/createoffer1" class="btn btn-success"> + Create Offer</a>
+                            <a href="/createoffer1" class="btn btn-success"> + Crear Aviso</a>
                         @endauth
                     </div>
                 </div>
@@ -79,25 +79,3 @@
         </div>
     </div>
 @endsection
-
-{{--@section('content')--}}
-{{--<div class="container">--}}
-{{--<div class="row justify-content-center">--}}
-{{--<div class="col-md-8">--}}
-{{--<div class="card">--}}
-{{--<div class="card-header">Dashboard</div>--}}
-
-{{--<div class="card-body">--}}
-{{--@if (session('status'))--}}
-{{--<div class="alert alert-success" role="alert">--}}
-{{--{{ session('status') }}--}}
-{{--</div>--}}
-{{--@endif--}}
-
-{{--You are logged in!--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--@endsection--}}

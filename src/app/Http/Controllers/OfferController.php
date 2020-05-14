@@ -172,7 +172,23 @@ class OfferController extends Controller
             $offer = $request->session()->get('offer');
             $offer->fill($validatedData);
 
+            $typeDescription = '';
+            switch ($offer->type) {
+                case 'request':
+                    $typeDescription = 'Ofrezco un Lugar';
+                    break;
+
+                case 'offer':
+                    $typeDescription = 'Busco un Lugar';
+                    break;
+
+                case 'other':
+                    $typeDescription = 'Otro / Miscelaneo';
+                    break;
+            }
+
             $request->session()->put('offer', $offer);
+            $request->session()->put('typeDescription', $typeDescription);
         }
         return redirect('/createoffer2');
     }
