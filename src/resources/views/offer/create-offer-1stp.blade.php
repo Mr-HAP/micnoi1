@@ -29,33 +29,12 @@
                         <select id="type" name="type" class="form-control">
                             <option {{ session()->get('offer.type') === "request" ? "selected" : "" }} value="request">Ofrezco un Lugar</option>
                             <option {{ session()->get('offer.type') === "offer" ? "selected" : "" }} value="offer">Busco un Lugar</option>
+                            <option {{ session()->get('offer.type') === "other" ? "selected" : "" }} value="other">Otro / Miscelaneo</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Continue</button>
+                    <button type="submit" class="btn btn-primary">Siguiente</button>
                 </form>
             </div>
         </div>
     </div>
 @endsection
-
-{{--@section('content')--}}
-{{--<div class="container">--}}
-{{--<div class="row justify-content-center">--}}
-{{--<div class="col-md-8">--}}
-{{--<div class="card">--}}
-{{--<div class="card-header">Dashboard</div>--}}
-
-{{--<div class="card-body">--}}
-{{--@if (session('status'))--}}
-{{--<div class="alert alert-success" role="alert">--}}
-{{--{{ session('status') }}--}}
-{{--</div>--}}
-{{--@endif--}}
-
-{{--You are logged in!--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--@endsection--}}

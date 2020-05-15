@@ -11,6 +11,10 @@
             <div class="col-12 text-center">
                 <h2>Paso  <span class="accentColor">2</span></h2>
                 <p>Crea un Titulo atractivo para tu anuncio, ademas debes seleccionar el pais y region que te interesa y por último debes agregar una descripción que explique lo que buscas/ofreces.</p>
+
+                <div>
+                    <p>Creando aviso tipo: {{ session()->get('typeDescription') }}</p>
+                </div>
             </div>
 
             <div class="col-12 text-center p-3">
@@ -40,7 +44,7 @@
                         </div>
                         <div class="form-group col-md-5">
                             <select id="state_id" name="state_id" class="form-control">
-                                <option>Choose State...</option>
+                                <option>Selecciona Region...</option>
 
                                 @foreach($states as $state)
                                     <option {{ (session()->get('offer.state_id')) == $state->state_id ? "selected" : "" }} value="{{$state->state_id}}">{{$state->name}}</option>
@@ -56,31 +60,9 @@
                         </textarea>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Continue</button>
+                    <button type="submit" class="btn btn-primary">Siguiente</button>
                 </form>
             </div>
         </div>
     </div>
 @endsection
-
-{{--@section('content')--}}
-{{--<div class="container">--}}
-{{--<div class="row justify-content-center">--}}
-{{--<div class="col-md-8">--}}
-{{--<div class="card">--}}
-{{--<div class="card-header">Dashboard</div>--}}
-
-{{--<div class="card-body">--}}
-{{--@if (session('status'))--}}
-{{--<div class="alert alert-success" role="alert">--}}
-{{--{{ session('status') }}--}}
-{{--</div>--}}
-{{--@endif--}}
-
-{{--You are logged in!--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--@endsection--}}

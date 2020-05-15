@@ -115,7 +115,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-top" aria-labelledby="dropdownMenuOffset">
                         <a class="dropdown-item" href="/my-profile">My Perfil</a>
-                        <a class="dropdown-item" href="/my-offers">My Offers</a>
+                        <a class="dropdown-item" href="/my-offers">Mis Avisos</a>
                         <a class="dropdown-item" href="/my-bands">My Bands/Musicxs</a>
                     </div>
                     <a class="ml-3 text-dark" href="{{ route('logout') }}"

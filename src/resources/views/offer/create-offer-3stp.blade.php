@@ -13,6 +13,10 @@
                 <p>Elige una imagen llamativa para tu Aviso!</p>
             </div>
 
+            <div>
+                <p>Creando aviso tipo: {{ session()->get('typeDescription') }}</p>
+            </div>
+
             <div class="col-12 text-center p-3">
                 @if(isset($offer->photo))
                     <div class="col-4 card">
@@ -21,13 +25,13 @@
                 @endif
                 <form action="/createoffer3" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
-                    <h3>Upload Image</h3><br/><br/>
+                    <h3>Cargar Imagen</h3><br/><br/>
 
                     <div class="form-group">
                         <input type="file" {{ (!empty($offer->photo)) ? "disabled" : ''}} class="form-control-file" name="photo" id="photo" aria-describedby="fileHelp">
-                        <small id="fileHelp" class="form-text text-muted">Please upload a valid image file. Size of image should not be more than 2MB.</small>
+                        <small id="fileHelp" class="form-text text-muted">Por favor cargue un archivo de imagen. El tamaño de la imagen no debe ser mayor a 2MB.</small>
                     </div>
-                    <button type="submit" class="btn btn-primary">Review Details</button>
+                    <button type="submit" class="btn btn-primary">Previsualizar aviso</button>
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -41,32 +45,10 @@
                 @if(isset($offer->photo))
                     <form action="/remove-image" method="post">
                         {{ csrf_field() }}
-                        <button type="submit" class="btn btn-danger">Remove Image</button>
+                        <button type="submit" class="btn btn-danger">Quitar imagen</button>
                     </form>
                 @endif
             </div>
         </div>
     </div>
 @endsection
-
-{{--@section('content')--}}
-{{--<div class="container">--}}
-{{--<div class="row justify-content-center">--}}
-{{--<div class="col-md-8">--}}
-{{--<div class="card">--}}
-{{--<div class="card-header">Dashboard</div>--}}
-
-{{--<div class="card-body">--}}
-{{--@if (session('status'))--}}
-{{--<div class="alert alert-success" role="alert">--}}
-{{--{{ session('status') }}--}}
-{{--</div>--}}
-{{--@endif--}}
-
-{{--You are logged in!--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--@endsection--}}

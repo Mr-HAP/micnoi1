@@ -10,7 +10,7 @@
             <b-navbar-nav class="items-menu d-flex flex-row justify-content-between">
                 <b-nav-item class="p-2" href="/"># INICIO</b-nav-item>
                 <b-nav-item class="p-2" href="/musician-list"># MUSICXS</b-nav-item>
-                <b-nav-item class="p-2" href="/offer-list"># OFFERS</b-nav-item>
+                <b-nav-item class="p-2" href="/offer-list"># AVISOS</b-nav-item>
                 <b-nav-item class="p-2" href="/help"># AYUDA</b-nav-item>
             </b-navbar-nav>
             <b-navbar-nav class="items-menu d-flex flex-row justify-content-between">

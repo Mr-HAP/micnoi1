@@ -59,7 +59,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
-                                Mis Ofertas
+                                Mis Avisos
                             </a>
                         </li>
                     </ul>
