@@ -23,7 +23,7 @@
                     <table class="table">
                         <tr>
                             <td>Titulo:</td>
-                            <td><strong>{{$offer->title}}</strong></td>
+                            <td><strong>{{ $offer->title }}</strong></td>
                         </tr>
                         <tr>
                             <td>Lugar:</td>
@@ -31,15 +31,20 @@
                         </tr>
                         <tr>
                             <td>Tipo:</td>
-                            <td><strong>{{$offer->type}}</strong></td>
+                            <td><strong>{{ $offer->type }}</strong></td>
                         </tr>
                         <tr>
                             <td>Descripción:</td>
-                            <td><strong>{{$offer->description}}</strong></td>
+                            <td><strong>{{ $offer->description }}</strong></td>
                         </tr>
                         <tr>
-                            <td>Imagen:</td>
-                            <td><strong><img class="img-thumbnail figure-img" width="150" alt="Product Image" src="/storage/img-offer/{{$offer->photo}}"/></strong></td>
+                            <td>Imagenes:</td>
+                            <td>
+                            @foreach($images as $image)
+                                <strong><img class="img-thumbnail figure-img" width="150" alt="Product Image" src="/storage/img-offer/{{ $image }}"/></strong>
+                                    <input type="hidden" name="images[]" value="{{ $image }}">
+                            @endforeach
+                            </td>
                         </tr>
                     </table>
                     <a type="button" href="/createoffer1" class="btn btn-warning">Regresar a paso 1</a>

@@ -14,5 +14,11 @@ class Offer extends Model
     protected $fillable = [
         'user_id','title', 'type', 'state_id', 'description', 'photo','create_at', 'update_at',
     ];
+
     protected $primaryKey = 'offer_id';
+
+    public function images()
+    {
+        return $this->hasMany('App\OfferImages', 'offer_id');
+    }
 }

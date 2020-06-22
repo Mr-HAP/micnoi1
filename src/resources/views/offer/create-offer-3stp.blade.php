@@ -13,7 +13,7 @@
                 <p>Elige una imagen llamativa para tu Aviso!</p>
             </div>
 
-            <div>
+            <div class="col-12 text-center">
                 <p>Creando aviso tipo: {{ session()->get('typeDescription') }}</p>
             </div>
 
@@ -25,11 +25,15 @@
                 @endif
                 <form action="/createoffer3" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
-                    <h3>Cargar Imagen</h3><br/><br/>
+                    <h3>Cargar Imagenes</h3><br/><br/>
 
                     <div class="form-group">
-                        <input type="file" {{ (!empty($offer->photo)) ? "disabled" : ''}} class="form-control-file" name="photo" id="photo" aria-describedby="fileHelp">
-                        <small id="fileHelp" class="form-text text-muted">Por favor cargue un archivo de imagen. El tamaño de la imagen no debe ser mayor a 2MB.</small>
+                        <input type="file" {{--{{ (!empty($offer->photo)) ? "disabled" : ''}}--}} class="form-control-file" name="images[]" id="photo1" aria-describedby="fileHelp" accept="image/png, image/jpeg, image/jpg">
+                        <input type="file" {{--{{ (!empty($offer->photo)) ? "disabled" : ''}}--}} class="form-control-file" name="images[]" id="photo2" aria-describedby="fileHelp" accept="image/png, image/jpeg, image/jpg">
+                        <input type="file" {{--{{ (!empty($offer->photo)) ? "disabled" : ''}}--}} class="form-control-file" name="images[]" id="photo3" aria-describedby="fileHelp" accept="image/png, image/jpeg, image/jpg">
+                        <input type="file" {{--{{ (!empty($offer->photo)) ? "disabled" : ''}}--}} class="form-control-file" name="images[]" id="photo4" aria-describedby="fileHelp" accept="image/png, image/jpeg, image/jpg">
+                        <input type="file" {{--{{ (!empty($offer->photo)) ? "disabled" : ''}}--}} class="form-control-file" name="images[]" id="photo5" aria-describedby="fileHelp" accept="image/png, image/jpeg, image/jpg">
+                        <small id="fileHelp" class="alert alert-info">Por favor cargue un archivo de imagen. El tamaño de la imagen no debe ser mayor a 2MB.</small>
                     </div>
                     <button type="submit" class="btn btn-primary">Previsualizar aviso</button>
                     @if ($errors->any())
