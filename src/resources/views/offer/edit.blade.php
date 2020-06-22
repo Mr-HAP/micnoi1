@@ -53,12 +53,12 @@
                     </div>
                     <div class="form-row mt-4">
                         <label for="photo" class="col-4 col-form-label"><h4>Modifica tu imagen/Flyer</h4></label>
-                        <input type="file" class="col-4 form-control-file" name="photo">
-                        @if(isset($offer->photo))
+                        <input type="file" class="col-4 form-control-file" name="images[]">
+                        @foreach($offer->images as $image)
                             <div class="col-4">
-                                <img class="img-thumbnail" alt="Offer Image" src="/storage/img-offer/{{$offer->photo}}" width="150" />
+                                <img class="img-thumbnail" alt="Offer Image" src="/storage/img-offer/{{ $image->image }}" width="150" />
                             </div>
-                        @endif
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-12 text-center">

@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Offer;
 use App\State;
+use App\OfferImages;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\URL;
@@ -101,6 +101,13 @@ class OfferController extends Controller
         $offer = $request->session()->get('offer');
         $offer->save();
 
+        foreach ($request->get('images') as $image) {
+            (new OfferImages([
+                'offer_id' => $offer->offer_id,
+                'image' => $image
+            ]))->save();
+        }
+
         return redirect('/offer-list');
     }
 
@@ -129,9 +136,8 @@ class OfferController extends Controller
     public function update(Request $request, $id)
     {
         $offer = Offer::find($id);
-        $offer->update($request->except('photo'));
 
-        if (isset($request->photo)) {
+        if (isset($request->images)) {
             $offer->photo = $this->loadImage($request);
             $offer->save();
         }
@@ -259,12 +265,13 @@ class OfferController extends Controller
 
         $states = State::all();
 
-        if (!isset($offer->photo)) {
+        if ($offer->images->isEmpty()) {
             $offer = $request->session()->get('offer');
-            $offer->photo = $this->loadImage($request);
+
+            $images = $this->loadImage($request);
             $request->session()->put('offer', $offer);
         }
-        return view('offer.create-offer-4stp', compact('offer', 'states'));
+        return view('offer.create-offer-4stp', compact('offer', 'states', 'images'));
     }
 
     /**
@@ -285,17 +292,22 @@ class OfferController extends Controller
     /**
      * Remove image from session variable in Offer Form Stepper
      *
-     * @param $requestPhoto
+     * @param $requestImages
      * @return string
      */
-    public function loadImage($requestPhoto)
+    public function loadImage($requestImages): array
     {
-        $requestPhoto->validate([
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        $requestImages->validate([
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,|max:2048',
         ]);
-        $fileName = "offer-" . time() . '.' . request()->photo->getClientOriginalExtension();
-        $requestPhoto->photo->storeAs('img-offer', $fileName);
 
-        return $fileName;
+        $filesNames = [];
+        foreach ($requestImages->images as $image) {
+            $fileName = "offer-" . time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('img-offer', $fileName);
+            $filesNames[] = $fileName;
+        }
+
+        return $filesNames;
     }
 }

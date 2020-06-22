@@ -58,8 +58,11 @@
                         @foreach($offers as $offer)
                             @php $stateOffer = $states->where('state_id', $offer->state_id)->pluck('name'); @endphp
                             <div class="card">
-{{--                           TODO: change to folder path when we begin storing imgages in our server
-                                /storage/img-offer/--}}
+                                @if($offer->images->isEmpty())
+                                    <img src="/storage/img-offer/micnoi-logo.png" class="card-img-top">
+                                @else
+                                    <img src="/storage/img-offer/{{ $offer->images[0]->image }}" class="card-img-top">
+                                @endif
                                 <img src="{{$offer->photo}}" class="card-img-top">
                                 <div class="card-body">
                                     <h5 class="card-title">{{$offer->title}}</h5>
