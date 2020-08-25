@@ -28,12 +28,13 @@ class OfferController extends Controller
         $action = URL::to('offer-list');
 
         $offers = Offer::all();
+        $allOffers = true;
 
         $request->session()->forget('offer');
         if ($request->input() !== null) {
             $offers = $this->filter($offers, $request);
         }
-        return view('offer-list', compact('offers', 'states', 'action'));
+        return view('offer-list', compact('offers', 'states', 'action', 'allOffers'));
     }
 
     /**
@@ -73,7 +74,9 @@ class OfferController extends Controller
             $offers = $this->filter($offers, $request);
         }
 
-        return view('offer-list', compact('offers', 'states', 'action'));
+        $myOffers = true;
+
+        return view('offer-list', compact('offers', 'states', 'action', 'title', 'myOffers'));
     }
 
     /**
