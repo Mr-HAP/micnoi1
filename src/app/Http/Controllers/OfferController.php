@@ -76,7 +76,7 @@ class OfferController extends Controller
 
         $myOffers = true;
 
-        return view('offer-list', compact('offers', 'states', 'action', 'title', 'myOffers'));
+        return view('offer-list', compact('offers', 'states', 'action', 'myOffers'));
     }
 
     /**
