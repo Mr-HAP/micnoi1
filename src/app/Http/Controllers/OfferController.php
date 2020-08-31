@@ -140,9 +140,22 @@ class OfferController extends Controller
     {
         $offer = Offer::find($id);
 
+        if (isset($request->{'delete-images'})) {
+            $found = $offer->images()->findOrFail($request->{'delete-images'});
+
+            $found->each(function ($image) {
+                $image->delete();
+            });
+        }
+
         if (isset($request->images)) {
-            $offer->photo = $this->loadImage($request);
-            $offer->save();
+            $images = $this->loadImage($request);
+            foreach ($images as $imageName) {
+                (new OfferImages([
+                    'offer_id' => $offer->offer_id,
+                    'image' => $imageName
+                ]))->save();
+            }
         }
 
         return redirect('/my-offers');
