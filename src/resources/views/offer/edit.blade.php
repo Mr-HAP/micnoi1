@@ -52,41 +52,56 @@
                         </div>
                     </div>
                     <div class="form-row mt-4">
-                        <label for="photo" class="col-4 col-form-label"><h4>Modifica tu imagen/Flyer</h4></label>
-                        <input type="file" class="col-4 form-control-file" name="images[]">
-                        @foreach($offer->images as $image)
-                            <div class="col-4">
-                                <img class="img-thumbnail" alt="Offer Image" src="/storage/img-offer/{{ $image->image }}" width="150" />
+                        <div class="form-row col-4 col-form-label">
+                            <label for="photo"><h4>Modifica tu imagen/Flyer</h4></label>
+                        </div>
+                    </div>
+                    @for($i = 0; $i < 3; $i++)
+                    <div class="form-row">
+                        <div class="input-group col-5 col-form-label">
+                            <div>
+                                <label class="">Seleccionar archivo
+                                    <input type="file" class="form-control-file" name="images[]">
+                                </label>
                             </div>
-                        @endforeach
+                        </div>
+                    </div>
+                    @endfor
+                    <div class="form-row">
+                        <small id="fileHelp" class="alert alert-info">Por favor cargue un archivo de imagen. El tamaño de la imagen no debe ser mayor a 2MB.</small>
+                    </div>
+                    <div class="form-row">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-left">Imagen</th>
+                                        <th class="text-left">Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($offer->images as $image)
+                                    <tr>
+                                        <td class="col-4 text-left">
+                                            <img class="img-thumbnail" alt="Offer Image" src="/storage/img-offer/{{ $image->image }}" width="150" />
+                                        </td>
+                                        <td class="text-left">
+                                            <label class="btn btn-secondary active">
+                                                <input type="checkbox" autocomplete="off" name="delete-images[]" value="{{$image->id}}"> Eliminar
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12 text-center">
-                    <button type="submit" class="btn btn-primary mb-2">Modificar</button>
+                    <button type="submit" class="btn btn-primary mb-2">Guardar</button>
+                    <a type="button" href="/my-offers" class="btn btn-danger mb-2 ml-5">Cancelar</a>
                 </div>
             </form>
         </div>
     </div>
 @endsection
-
-{{--@section('content')--}}
-{{--<div class="container">--}}
-{{--<div class="row justify-content-center">--}}
-{{--<div class="col-md-8">--}}
-{{--<div class="card">--}}
-{{--<div class="card-header">Dashboard</div>--}}
-
-{{--<div class="card-body">--}}
-{{--@if (session('status'))--}}
-{{--<div class="alert alert-success" role="alert">--}}
-{{--{{ session('status') }}--}}
-{{--</div>--}}
-{{--@endif--}}
-
-{{--You are logged in!--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--@endsection--}}
