@@ -27,12 +27,18 @@
                     {{ csrf_field() }}
                     <h3>Cargar Imagenes</h3><br/><br/>
 
+
+                    @if(session()->get('images'))
+                    @foreach(session()->get('images') as $image)
+                        <strong><img class="img-thumbnail figure-img" width="150" alt="Product Image" src="/storage/img-offer/{{ $image }}"/></strong>
+                        <input type="hidden" name="images[]" value="{{ $image }}">
+                    @endforeach
+                    @endif
+
                     <div class="form-group">
-                        <input type="file" {{--{{ (!empty($offer->photo)) ? "disabled" : ''}}--}} class="form-control-file" name="images[]" id="photo1" aria-describedby="fileHelp" accept="image/png, image/jpeg, image/jpg">
-                        <input type="file" {{--{{ (!empty($offer->photo)) ? "disabled" : ''}}--}} class="form-control-file" name="images[]" id="photo2" aria-describedby="fileHelp" accept="image/png, image/jpeg, image/jpg">
-                        <input type="file" {{--{{ (!empty($offer->photo)) ? "disabled" : ''}}--}} class="form-control-file" name="images[]" id="photo3" aria-describedby="fileHelp" accept="image/png, image/jpeg, image/jpg">
-                        <input type="file" {{--{{ (!empty($offer->photo)) ? "disabled" : ''}}--}} class="form-control-file" name="images[]" id="photo4" aria-describedby="fileHelp" accept="image/png, image/jpeg, image/jpg">
-                        <input type="file" {{--{{ (!empty($offer->photo)) ? "disabled" : ''}}--}} class="form-control-file" name="images[]" id="photo5" aria-describedby="fileHelp" accept="image/png, image/jpeg, image/jpg">
+                        @for($i = 1; $i < 6; $i++)
+                        <input type="file" class="form-control-file" name="images[]" id="photo{{ $i }}" aria-describedby="fileHelp" accept="image/png, image/jpeg, image/jpg">
+                        @endfor
                         <small id="fileHelp" class="alert alert-info">Por favor cargue un archivo de imagen. El tamaño de la imagen no debe ser mayor a 2MB.</small>
                     </div>
                     <button type="submit" class="btn btn-primary">Previsualizar aviso</button>

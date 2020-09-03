@@ -31,6 +31,7 @@ class OfferController extends Controller
         $allOffers = true;
 
         $request->session()->forget('offer');
+        $request->session()->forget('images');
         if ($request->input() !== null) {
             $offers = $this->filter($offers, $request);
         }
@@ -290,12 +291,14 @@ class OfferController extends Controller
         $states = State::all();
 
         if ($offer->images->isEmpty()) {
-            $offer = $request->session()->get('offer');
-
-            $images = $this->loadImage($request);
-            $request->session()->put('offer', $offer);
+            $images = [];
+            if($request->files->count() > 0) {
+                $images = $this->loadImage($request);
+            }
+            $images = array_merge($images, $request->session()->get('images'));
+            $request->session()->put('images', $images);
         }
-        return view('offer.create-offer-4stp', compact('offer', 'states', 'images'));
+        return view('offer.create-offer-4stp', compact('offer', 'states'));
     }
 
     /**
@@ -321,12 +324,15 @@ class OfferController extends Controller
      */
     public function loadImage($requestImages): array
     {
-        $requestImages->validate([
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,|max:2048',
-        ]);
+//        $requestImages->validate([
+//            'images.*' => 'required|image|mimes:jpeg,png,jpg,|max:2048',
+//        ]);
 
         $filesNames = [];
         foreach ($requestImages->images as $image) {
+            if (is_string($image)) {
+                continue;
+            }
             $fileName = "offer-" . time() . '.' . $image->getClientOriginalExtension();
             $image->storeAs('img-offer', $fileName);
             $filesNames[] = $fileName;
