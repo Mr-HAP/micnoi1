@@ -140,6 +140,14 @@ class OfferController extends Controller
     {
         $offer = Offer::find($id);
 
+        $validatedData = $request->validate([
+            'type' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'state_id' => 'required',
+        ]);
+        $offer->fill($validatedData)->save();
+
         if (isset($request->{'delete-images'})) {
             $found = $offer->images()->findOrFail($request->{'delete-images'});
 
