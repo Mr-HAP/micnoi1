@@ -40,7 +40,7 @@
                         <tr>
                             <td>Imagenes:</td>
                             <td>
-                            @foreach($images as $image)
+                            @foreach(session()->get('images') as $image)
                                 <strong><img class="img-thumbnail figure-img" width="150" alt="Product Image" src="/storage/img-offer/{{ $image }}"/></strong>
                                     <input type="hidden" name="images[]" value="{{ $image }}">
                             @endforeach
