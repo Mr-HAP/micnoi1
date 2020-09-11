@@ -295,7 +295,7 @@ class OfferController extends Controller
             if($request->files->count() > 0) {
                 $images = $this->loadImage($request);
             }
-            $images = array_merge($images, $request->session()->get('images'));
+            $images = array_merge($images, $request->session()->get('images') ?: []);
             $request->session()->put('images', $images);
         }
         return view('offer.create-offer-4stp', compact('offer', 'states'));
