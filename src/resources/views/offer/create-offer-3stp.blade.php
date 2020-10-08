@@ -41,6 +41,7 @@
                         @endfor
                         <small id="fileHelp" class="alert alert-info">Por favor cargue un archivo de imagen. El tamaño de la imagen no debe ser mayor a 2MB.</small>
                     </div>
+                    <a type="button" href="/createoffer2" class="btn btn-warning">Regresar</a>
                     <button type="submit" class="btn btn-primary">Previsualizar aviso</button>
                     @if ($errors->any())
                         <div class="alert alert-danger">

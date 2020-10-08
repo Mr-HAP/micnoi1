@@ -60,6 +60,7 @@
                         </textarea>
                         </div>
                     </div>
+                    <a type="button" href="/createoffer1" class="btn btn-warning">Regresar</a>
                     <button type="submit" class="btn btn-primary">Siguiente</button>
                 </form>
             </div>
