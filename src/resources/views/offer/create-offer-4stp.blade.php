@@ -34,6 +34,15 @@
                             <td><strong>{{ $offer->type }}</strong></td>
                         </tr>
                         <tr>
+                            @if ($offer->host_gender)
+                            <td>Idendidad de género anfitrión:</td>
+                            <td><strong>{{ $offer->host_gender }}</strong></td>
+                            @else
+                                <td>Idendidad de género solicitante:</td>
+                                <td><strong>{{ $offer->guest_gender }}</strong></td>
+                            @endif
+                        </tr>
+                        <tr>
                             <td>Descripción:</td>
                             <td><strong>{{ $offer->description }}</strong></td>
                         </tr>

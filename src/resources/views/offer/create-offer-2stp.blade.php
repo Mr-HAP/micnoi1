@@ -53,6 +53,21 @@
                         </div>
                     </div>
                     <div class="form-row">
+                        @if(session()->get('offer')->type === 'offer')
+                            <label for="gender" class="col-sm-3 col-form-label"><h4>Idendidad de género anfitrión</h4></label>
+                        @else
+                            <label for="gender" class="col-sm-3 col-form-label"><h4>Idendidad de género solicitante</h4></label>
+                        @endif
+                        <div class="col-sm-9">
+                            <select name="{{session()->get('offer')->type === 'offer' ? 'host_gender' : 'guest_gender'}}" id="gender" class="form-control">
+                                <option>Selecciona género...</option>
+                                @foreach(session()->get('genders') as $genderValue => $genderText)
+                                    <option value="{{$genderValue}}">{{$genderText}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
                         <label for="description" class="col-sm-3 col-form-label"><h4>Aviso</h4></label>
                         <div class="col-sm-9">
                         <textarea placeholder="Aviso... " class="form-control" id="description" name="description"rows="3">

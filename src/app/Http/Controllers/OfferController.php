@@ -15,6 +15,11 @@ use Illuminate\Http\RedirectResponse;
 
 class OfferController extends Controller
 {
+    private $genders = [
+        'femenino' => 'Femenino',
+        'masculino' => 'Masculino',
+        'lgbti' => 'LGBTI'
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -121,11 +126,13 @@ class OfferController extends Controller
      * @param  int  $id
      * @return View
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $action = URL::to('/update-offer/update/' . $id);
         $states = State::all();
         $offer = Offer::find($id);
+
+        $request->session()->put('genders', $this->genders);
 
         return view('offer.edit',compact('offer','action','states'));
     }
@@ -147,6 +154,15 @@ class OfferController extends Controller
             'description' => 'required',
             'state_id' => 'required',
         ]);
+
+        if ($request->get('host_gender')) {
+            $offer->host_gender = $request->get('host_gender');
+        }
+
+        if ($request->get('guest_gender')) {
+            $offer->guest_gender = $request->get('guest_gender');
+        }
+        
         $offer->fill($validatedData)->save();
 
         if (isset($request->{'delete-images'})) {
@@ -208,11 +224,11 @@ class OfferController extends Controller
 
         $typeDescription = '';
         switch ($offer->type) {
-            case 'request':
+            case 'offer':
                 $typeDescription = 'Ofrezco un Lugar';
                 break;
 
-            case 'offer':
+            case 'request':
                 $typeDescription = 'Busco un Lugar';
                 break;
 
@@ -222,6 +238,8 @@ class OfferController extends Controller
         }
 
         $request->session()->put('typeDescription', $typeDescription);
+        $request->session()->put('offer', $offer);
+        $request->session()->put('genders', $this->genders);
 
         return redirect('/createoffer2');
     }
@@ -253,6 +271,8 @@ class OfferController extends Controller
             'title' => 'required',
             'description' => 'required',
             'state_id' => 'required',
+            'host_gender' => 'sometimes|required',
+            'guest_gender' => 'sometimes|required',
         ]);
         if (empty($request->session()->get('offer'))) {
             return redirect('/createoffer3');
@@ -260,8 +280,17 @@ class OfferController extends Controller
             $offer = $request->session()->get('offer');
             $offer->fill($validatedData);
 
+            if ($request->get('host_gender')) {
+                $offer->host_gender = $request->get('host_gender');
+            }
+
+            if ($request->get('guest_gender')) {
+                $offer->guest_gender = $request->get('guest_gender');
+            }
+
             $request->session()->put('offer', $offer);
         }
+
         return redirect('/createoffer3');
     }
 
