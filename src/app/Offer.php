@@ -12,7 +12,7 @@ class Offer extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id','title', 'type', 'state_id', 'description', 'photo','create_at', 'update_at',
+        'user_id','title', 'type', 'state_id', 'description', 'photo','create_at', 'update_at', 'host_gender', 'guest_gender',
     ];
 
     protected $primaryKey = 'offer_id';

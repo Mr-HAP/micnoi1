@@ -27,8 +27,8 @@
                     @csrf
                     <div class="form-group col-10 offset-1 col-sm-10">
                         <select id="type" name="type" class="form-control">
-                            <option {{ session()->get('offer.type') === "request" ? "selected" : "" }} value="request">Ofrezco un Lugar</option>
-                            <option {{ session()->get('offer.type') === "offer" ? "selected" : "" }} value="offer">Busco un Lugar</option>
+                            <option {{ session()->get('offer.type') === "offer" ? "selected" : "" }} value="offer">Ofrezco un Lugar</option>
+                            <option {{ session()->get('offer.type') === "request" ? "selected" : "" }} value="request">Busco un Lugar</option>
                             <option {{ session()->get('offer.type') === "other" ? "selected" : "" }} value="other">Otro / Miscelaneo</option>
                         </select>
                     </div>

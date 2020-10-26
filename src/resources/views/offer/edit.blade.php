@@ -19,8 +19,8 @@
                     <div class="form-group row">
                         <label for="type" class="col-sm-3 col-form-label"><h4>Tipo de Aviso</h4></label>
                         <select id="type" name="type" class="col-9 form-control">
-                            <option {{ $offer->type === "request" ? "selected" : "" }} value="request">Ofrezco un Lugar</option>
-                            <option {{ $offer->type === "offer" ? "selected" : "" }} value="offer">Busco un Lugar</option>
+                            <option {{ $offer->type === "offer" ? "selected" : "" }} value="request">Ofrezco un Lugar</option>
+                            <option {{ $offer->type === "request" ? "selected" : "" }} value="offer">Busco un Lugar</option>
                         </select>
                     </div>
                     <div class="form-group row">
@@ -41,6 +41,21 @@
                                 <option>Choose State...</option>
                                 @foreach($states as $state)
                                     <option {{ $offer->state_id == $state->state_id ? "selected" : "" }} value="{{$state->state_id}}">{{$state->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        @if($offer->type === 'offer')
+                            <label for="gender" class="col-sm-3 col-form-label"><h4>Idendidad de género anfitrión</h4></label>
+                        @else
+                            <label for="gender" class="col-sm-3 col-form-label"><h4>Idendidad de género solicitante</h4></label>
+                        @endif
+                        <div class="col-sm-9">
+                            <select name="{{$offer->type === 'offer' ? 'host_gender' : 'guest_gender'}}" id="gender" class="form-control">
+                                <option>Selecciona género...</option>
+                                @foreach(session()->get('genders') as $genderValue => $genderText)
+                                    <option {{ $offer->host_gender == $genderValue ? "selected" : $offer->guest_gender == $genderValue ? "selected" : "" }} value="{{$genderValue}}">{{$genderText}}</option>
                                 @endforeach
                             </select>
                         </div>
