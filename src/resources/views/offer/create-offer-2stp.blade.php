@@ -58,13 +58,20 @@
                         @else
                             <label for="gender" class="col-sm-3 col-form-label"><h4>Idendidad de género solicitante</h4></label>
                         @endif
-                        <div class="col-sm-9">
-                            <select name="{{session()->get('offer')->type === 'offer' ? 'host_gender' : 'guest_gender'}}" id="gender" class="form-control">
-                                <option>Selecciona género...</option>
-                                @foreach(session()->get('genders') as $genderValue => $genderText)
-                                    <option value="{{$genderValue}}">{{$genderText}}</option>
-                                @endforeach
-                            </select>
+                        <div class="col-sm-9 form-row">
+                            @foreach(session()->get('genders') as $genderValue => $genderText)
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" id="{{$genderValue}}" value="{{$genderValue}}" name="{{session()->get('offer')->type === 'offer' ? 'host_gender' : 'guest_gender'}}">
+                                    <label class="custom-control-label" for="{{$genderValue}}">{{$genderText}}</label>
+                                </div>
+                            @endforeach
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="otro" value="o:" name="{{session()->get('offer')->type === 'offer' ? 'host_gender' : 'guest_gender'}}">
+                                <label class="custom-control-label" for="otro">OTRO</label>
+                            </div>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="title" name="o:" placeholder="Otro">
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">

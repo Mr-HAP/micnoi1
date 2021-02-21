@@ -162,7 +162,7 @@ class OfferController extends Controller
         if ($request->get('guest_gender')) {
             $offer->guest_gender = $request->get('guest_gender');
         }
-        
+
         $offer->fill($validatedData)->save();
 
         if (isset($request->{'delete-images'})) {
@@ -267,6 +267,7 @@ class OfferController extends Controller
      */
     public function OffercreateStep2(Request $request)
     {
+        dd($request);
         $validatedData = $request->validate([
             'title' => 'required',
             'description' => 'required',
