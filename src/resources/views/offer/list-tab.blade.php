@@ -59,7 +59,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{$offer->title}}</h5>
                     <p class="card-text">{{$offer->description}}</p>
-                    <p class="card-text"><small class="text-muted">{{$stateOffer[0]}}</small></p>
+                    <p class="card-text"><small class="text-muted">{{@$stateOffer[0]}}</small></p>
                 </div>
                 @if (Auth::user() && Auth::user()->id == $offer->user_id)
                     <div class="card-footer">
