@@ -12,9 +12,12 @@
 */
 
 // inicio
-Route::get('/', function () {
-    return view('home');
-});
+Route::view('/', 'home');
+
+// inicio
+//Route::get('/', function () {
+//    return view('home');
+//});
 // Home - return view home
 Route::get('/home', 'HomeController@index')->name('home');
 
