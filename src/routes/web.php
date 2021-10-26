@@ -30,8 +30,15 @@ Route::get('/about-us', function () {
 Auth::routes();
 
 //Logout User - Return Home
-Route::get('logout', 'LoginController@logout');
+Route::get('logout', 'Auth\LoginController@logout');
 
+Route::get('user', function() {
+    return response(strval(Auth::user()));
+});
+
+Route::get('check-auth', function() {
+    return Auth::check() ? response('true') : response('false');
+});
 
 /* --- Fans Routes --- */
 //registro fans

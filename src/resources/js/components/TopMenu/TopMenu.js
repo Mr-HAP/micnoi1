@@ -12,7 +12,7 @@ export default class TopMenu extends Component {
                     <Link to={'/'} className="navbar-brand w-15"><img src="/img/micnoi-logo.png" alt=""/></Link>
                     <ul className="navbar-nav items-menu registro-header w-50">
                     <li className="nav-item">
-                        <Link to={'#'} className="nav-link">REGISTRATE<br></br><span className="exp-txt10">GRATIS</span>
+                        <Link to={'register'} className="nav-link">REGISTRATE<br></br><span className="exp-txt10">GRATIS</span>
                     </Link>
                     </li>
                     </ul>

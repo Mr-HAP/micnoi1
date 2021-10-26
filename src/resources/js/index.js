@@ -16,12 +16,6 @@ export default class Index extends Component {
                     <TopMenu />
                 </div>
             </header>
-            // <div className="container">
-            //     <div id="cabecera" className="row">
-            //         <TopMenu />
-            //     </div>
-            //     {/*<Home />*/}
-            // </div>
         );
     }
 }
