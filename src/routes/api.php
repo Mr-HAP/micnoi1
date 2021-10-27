@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Http\Request;
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ApiLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('check-auth', function() {
     return Auth::check() ? response('true') : response('false');
 });
+Route::post('/login', [ApiLoginController::class, 'login']);
 //Route::post('loginform', [LoginController::class, 'login']);
