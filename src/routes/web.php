@@ -56,7 +56,7 @@ Route::get('/offer-list/{stateid?}/{countryid?}', 'OfferController@index');
 
 Route::group(
     [
-        'middleware' => ['role:musico'],
+        'middleware' => ['auth', 'role:musico'],
     ],
     function (){
         //Return list same owner

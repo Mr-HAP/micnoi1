@@ -16,11 +16,7 @@ class Role
      */
     public function handle($request, Closure $next,... $roles)
     {
-        if (!Auth::check()){
-            return redirect('login');
-        }
-
-        $user = Auth::user();
+        $user = Auth::user() ?? auth('api')->user();
 
         if($user->isAdmin()) {
             return $next($request);
