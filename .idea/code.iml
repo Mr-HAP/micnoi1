@@ -101,8 +101,6 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/barryvdh/laravel-ide-helper" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/theseer/tokenizer" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-mbstring" />
-      <excludeFolder url="file://$MODULE_DIR$/src/vendor/fruitcake/laravel-cors" />
-      <excludeFolder url="file://$MODULE_DIR$/src/vendor/asm89/stack-cors" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/ralouphie/getallheaders" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/laravel/passport" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/league/event" />
