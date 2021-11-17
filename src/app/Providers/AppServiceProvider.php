@@ -24,6 +24,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (config('app.debug')) {
+            error_reporting(E_ALL & ~E_USER_DEPRECATED);
+        } else {
+            error_reporting(0);
+        }
         Schema::defaultStringLength(191);
     }
 }
