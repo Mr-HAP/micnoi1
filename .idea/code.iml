@@ -101,6 +101,23 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/barryvdh/laravel-ide-helper" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/theseer/tokenizer" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/fruitcake/laravel-cors" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/asm89/stack-cors" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/laravel/passport" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/league/event" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/league/oauth2-server" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/zendframework/zend-diactoros" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/lcobucci/jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/firebase/php-jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/psr-http-message-bridge" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/phpseclib/phpseclib" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/defuse/php-encryption" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/guzzlehttp/promises" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
