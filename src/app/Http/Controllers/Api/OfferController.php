@@ -20,7 +20,8 @@ class OfferController
      */
     public function index(Request $request)
     {
-        $offers = Offer::all();
+        $offers = Offer::whereNotNull('offer_id')->with('images')->get();
+
         if ($request->input() !== null) {
             $offers = $this->filter($offers, $request);
         }
