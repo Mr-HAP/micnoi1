@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\NewOfferController;
+use App\Http\Controllers\Api\OfferController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +23,7 @@ Route::get('check-auth', function() {
 });
 Route::post('/login', [AuthController::class, 'login']);
 //Route::post('loginform', [LoginController::class, 'login']);
-
-Route::middleware('auth:api')->get('/offers');
+//Route::middleware('auth:api')->get('/offers');
 
 Route::group(
     [
@@ -32,7 +31,9 @@ Route::group(
     ],
     function (){
         //Offer Musician
-        Route::post('/offer/store', [NewOfferController::class, 'store']);
-        Route::get('/offers', [NewOfferController::class, 'index']);
+//        Route::post('/offer/store', [OfferController::class, 'store']);
+        Route::get('/offers', [OfferController::class, 'index']);
+        Route::get('/offers/{id}', [OfferController::class, 'show']);
+        Route::put('/offers/{id}', [OfferController::class, 'update']);
     }
 );
