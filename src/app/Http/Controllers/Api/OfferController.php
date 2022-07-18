@@ -84,8 +84,11 @@ class OfferController
         $offer->description = !is_null($request->get('description')) ? $request->get('description') : $offer->description;
         $offer->host_gender = !is_null($request->get('host_gender')) ? $request->get('host_gender') : $offer->host_gender;
         $offer->guest_gender = !is_null($request->get('guest_gender')) ? $request->get('guest_gender') : $offer->guest_gender;
-        $offer->update();
 
-        return response($offer);
+        if($offer->update()) {
+            return $this->show($id);
+        }
+
+        return response('No es posible actualizar el recurso', 403);
     }
 }
