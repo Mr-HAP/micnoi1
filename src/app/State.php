@@ -4,6 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\State
+ *
+ * @property int $state_id
+ * @property int $country_id
+ * @property string $name
+ * @property-read \App\Country $country
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\State newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\State newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\State query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\State whereCountryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\State whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\State whereStateId($value)
+ * @mixin \Eloquent
+ */
 class State extends Model
 {
     /**

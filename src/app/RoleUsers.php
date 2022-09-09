@@ -4,6 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\RoleUsers
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoleUsers newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoleUsers newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoleUsers query()
+ * @mixin \Eloquent
+ */
 class RoleUsers extends Model
 {
     /**

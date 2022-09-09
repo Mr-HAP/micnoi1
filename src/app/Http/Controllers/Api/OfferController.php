@@ -6,8 +6,9 @@ use App\OfferImages;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Collection;
+use App\Http\Controllers\Controller;
 
-class OfferController
+class OfferController extends Controller
 {
     private $genders = [
         'femenino' => 'Femenino',
