@@ -33,6 +33,7 @@ Route::group(
         //Offer Musician
 //        Route::post('/offer/store', [OfferController::class, 'store']);
         Route::get('/offers', [OfferController::class, 'index']);
+        Route::post('/offers', [OfferController::class, 'store']);
         Route::get('/offers/{id}', [OfferController::class, 'show']);
         Route::put('/offers/{id}', [OfferController::class, 'update']);
     }

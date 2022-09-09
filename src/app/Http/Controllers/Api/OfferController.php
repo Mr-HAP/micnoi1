@@ -2,7 +2,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Offer;
+use App\OfferImages;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Collection;
 
 class OfferController
@@ -12,6 +14,13 @@ class OfferController
         'masculino' => 'Masculino',
         'lgbti' => 'LGBTI'
     ];
+
+    private $offerType = [
+        'offer' => 'Ofrezco un Lugar',
+        'request' => 'Busco un Lugar',
+        'other' => 'Otro / Miscelaneo',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -57,6 +66,45 @@ class OfferController
     public function show($id)
     {
         $offer = Offer::with('images')->where('offer_id', '=', $id)->get();
+
+        return response($offer);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'title' => ['required'],
+            'type' => ['required', Rule::in(array_keys($this->offerType))],
+            'description' => ['required'],
+            'state_id' => ['required', Rule::exists('states', 'state_id')],
+            'host_gender' => ['sometimes', Rule::in(array_keys($this->genders))],
+            'guest_gender' => ['sometimes', Rule::in(array_keys($this->genders))],
+            'images[]' => ['sometimes','image:jpg','mime']
+        ]);
+        $images = $request->file('images');
+        $fileImgNames = [];
+        if ($images) {
+            foreach ($images as $img){
+                $fileName = 'offer-' . time() . '.' . $img->getClientOriginalExtension();
+                $img->storeAs('img-offer', $fileName);
+                $fileImgNames[] = $fileName;
+            }
+        }
+
+        $offer = new Offer(['user_id' => auth()->user()->id]);
+        $offer->fill($validatedData);
+        $offer->save();
+        foreach ($fileImgNames as $fileImgName) {
+            OfferImages::create(['offer_id' => $offer->offer_id, 'image' => $fileImgName]);
+//            $offer->images()->saveMany($offerImages->getAttributes());
+        }
+        $offer->images = $offer->images()->get();
 
         return response($offer);
     }
