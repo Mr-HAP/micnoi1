@@ -42,4 +42,8 @@ class UserDetail extends Model
         'id_user_detail','id_user','country','city','photo','video','facebook','instagram','youtube'
     ];
 
+    public function user()
+    {
+        return $this->hasOne('App\User')->withDefault();
+    }
 }

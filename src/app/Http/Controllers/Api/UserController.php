@@ -1,28 +1,30 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Band;
 use App\Offer;
 use App\User;
 use App\UserDetail;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $user = User::find(auth()->user()->id);
-        $userdetails = UserDetail::where('id_user', auth()->user()->id)->get()->first();
-        $mybands = Band::where('id_admin_band', auth()->user()->id)->get();
-        $myoffers = Offer::where('user_id', auth()->user()->id)->get();
-
-        return view('user-profile', compact('user', 'userdetails', 'mybands', 'myoffers'));
+//        $user = User::find(auth()->user()->id);
+//        $user = User::with();
+//        $userdetails = UserDetail::where('id_user', auth()->user()->id)->get()->first();
+//        $mybands = Band::where('id_admin_band', auth()->user()->id)->get();
+//        $myoffers = Offer::where('user_id', auth()->user()->id)->get();
+//
+//        return view('user-profile', compact('user', 'userdetails', 'mybands', 'myoffers'));
     }
 
     /**
@@ -54,7 +56,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        // @TODO: add offers and bands
+        $user = User::with('details')->with('roles')->where('id', '=', $id)->get();
+
+        return response($user);
     }
 
     /**

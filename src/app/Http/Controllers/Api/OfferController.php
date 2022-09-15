@@ -105,7 +105,7 @@ class OfferController extends Controller
             OfferImages::create(['offer_id' => $offer->offer_id, 'image' => $fileImgName]);
 //            $offer->images()->saveMany($offerImages->getAttributes());
         }
-        $offer->images = $offer->images()->get();
+        $offer->setAttribute('images', $offer->images()->get());
 
         return response($offer);
     }

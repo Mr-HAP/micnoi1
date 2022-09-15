@@ -2,6 +2,7 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\OfferController;
+use App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,5 +37,7 @@ Route::group(
         Route::post('/offers', [OfferController::class, 'store']);
         Route::get('/offers/{id}', [OfferController::class, 'show']);
         Route::put('/offers/{id}', [OfferController::class, 'update']);
+
+        Route::get('/users/{id}', [UserController::class, 'show']);
     }
 );

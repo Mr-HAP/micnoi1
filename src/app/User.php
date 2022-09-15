@@ -108,6 +108,7 @@ class User extends Authenticatable
         }
         return false;
     }
+
     public function isAdmin()
     {
         if ($this->role === 1)
@@ -116,5 +117,10 @@ class User extends Authenticatable
         }
 
         return false;
+    }
+
+    public function details()
+    {
+        return $this->hasOne('App\UserDetail', 'id_user')->withDefault();
     }
 }
