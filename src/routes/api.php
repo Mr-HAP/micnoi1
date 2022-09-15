@@ -38,6 +38,7 @@ Route::group(
         Route::get('/offers/{id}', [OfferController::class, 'show']);
         Route::put('/offers/{id}', [OfferController::class, 'update']);
 
+        // @TODO: dejarlo bajo un rol de admin o que el usuario loggeado pueda obtener sus detalles
         Route::get('/users/{id}', [UserController::class, 'show']);
     }
 );
