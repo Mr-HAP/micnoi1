@@ -26,6 +26,9 @@ Route::post('/login', [AuthController::class, 'login']);
 //Route::post('loginform', [LoginController::class, 'login']);
 //Route::middleware('auth:api')->get('/offers');
 
+// @TODO put it behind some sort of validation to avoid bots creating users
+Route::post('/users', [UserController::class, 'store']);
+
 Route::group(
     [
         'middleware' => ['auth:api', 'role:musico'],

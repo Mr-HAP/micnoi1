@@ -4,13 +4,21 @@ namespace App\Http\Controllers\Api;
 
 use App\Band;
 use App\Offer;
+use App\Role;
 use App\User;
+use App\RoleUser;
 use App\UserDetail;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
+    private $roles = [
+        'musico' => 'Perfil de musico',
+        'fan' => 'Perfil de fan'
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +53,25 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => ['required'],
+            'email' => ['required', Rule::unique('users', 'email')],
+            'password' => ['required'],
+            'role' => ['required', Rule::in(array_keys($this->roles))],
+        ]);
+
+        $validatedData['password'] = bcrypt($validatedData['password']);
+
+        $user = (new User())->fill($validatedData);
+        $user->save();
+
+        $roleUser = new RoleUser();
+        $roleUser->setAttribute('user_id', $user->id);
+        $roleUser->setAttribute('role_id', Role::where('name', '=', $request->role)->first()->id);
+        $roleUser->save();
+
+        // @TODO later try to return the role as well
+        return response($user);
     }
 
     /**
