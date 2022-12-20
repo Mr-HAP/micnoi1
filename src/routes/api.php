@@ -43,5 +43,6 @@ Route::group(
 
         // @TODO: dejarlo bajo un rol de admin o que el usuario loggeado pueda obtener sus detalles
         Route::get('/users/{id}', [UserController::class, 'show']);
+        Route::put('/users/{id}', [UserController::class, 'update']);
     }
 );

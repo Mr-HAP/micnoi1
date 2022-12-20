@@ -108,7 +108,26 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // set a way that only admins can update other users
+        // if not admin the user only could update them self
+        $user = User::find($id);
+        if(!$user) {
+            return response('No es posible actualizar el recurso', 403);
+        }
+
+        if(!is_null($request->get('password'))){
+            $cryptedPassword = bcrypt($request->get('password'));
+        }
+
+        $user->name = !is_null($request->get('name')) ? $request->get('name'): $user->name;
+        $user->email = !is_null($request->get('email')) ? $request->get('email'): $user->email;
+        $user->password = isset($cryptedPassword) ? $cryptedPassword : $user->password;
+
+        if($user->update()) {
+            return $this->show($id);
+        }
+
+        return response('No es posible actualizar el recurso', 403);
     }
 
     /**
